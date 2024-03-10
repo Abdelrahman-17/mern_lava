@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-const app = express();
-// const { app, server } = require('./socket/socket.js');
-// const path = require("path");
+// const app = express();
+const { app, server } = require('./socket/socket.js');
+const path = require("path");
 require('dotenv').config()
 const cookieParser = require("cookie-parser");
 require('./config/passport')(app);
@@ -81,17 +81,17 @@ const connectToMongoDB = require("./db/ConnectToMongoDB.js");
 //   console.log('Connected to MongoDB');
 // });
 
-app.get("/", async (req, res) => {
-    res.send("server running")
-    // const clientURL = req.headers.host
-    // if (clientURL.includes('localhost')) {
-    //     console.log('react')
-    // }
-    // else {
-    //     console.log('fluter')
-    // }
-    // res.render("index", { email: 'verify.email', status: "verified" });
-});
+// app.get("/", async (req, res) => {
+//     res.send("server running")
+//     // const clientURL = req.headers.host
+//     // if (clientURL.includes('localhost')) {
+//     //     console.log('react')
+//     // }
+//     // else {
+//     //     console.log('fluter')
+//     // }
+//     // res.render("index", { email: 'verify.email', status: "verified" });
+// });
 
 // const accountSid = process.env.TWILIO_ACCOUNT_SID;
 // const authToken = process.env.TWILIO_AUTH_TOKEN;
@@ -125,22 +125,22 @@ app.get("/", async (req, res) => {
 
 
 // Define routes and middleware
-app.listen(port, () => {
+// app.listen(port, () => {
+// connectToMongoDB();
+// server.timeout = 30000;
+// console.log(`${chalk.blue(`Server running on port ${port}`)}`)
+// console.log(`Server running on port ${port}`);
+// });
+
+__dirname = path.resolve();
+
+app.use(express.static(path.join(__dirname, '/client/dist')));
+app.get("*", (req, res) => {
+    // res.send('res')
+    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+})
+server.listen(port, () => {
     connectToMongoDB();
-    // server.timeout = 30000;
-    // console.log(`${chalk.blue(`Server running on port ${port}`)}`)
     console.log(`Server running on port ${port}`);
 });
-
-// __dirname = path.resolve();
-
-// app.use(express.static(path.join(__dirname, '/client/dist')));
-// app.get("*", (req, res) => {
-//     // res.send('res')
-//     res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
-// })
-// server.listen(port, () => {
-//     connectToMongoDB();
-//     console.log(`Server running on port ${port}`);
-// });
 // import { Analytics } from "@vercel/analytics/react"
