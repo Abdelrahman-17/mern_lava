@@ -24,7 +24,7 @@ To run this project locally you can use docker compose provided in the repositor
 
 Clone the repository
 
-$ git clone https://github.com/MohamedWael257/Mern-Lava.git
+$ git clone https://github.com/MohamedWael257/mern_lava.git
 
 
 Edit the dockercompose.yml file and update the the values for MONGO_URI and JWT_SECRET
@@ -56,7 +56,7 @@ See admin dashboard [demo]()
 Some basic Git commands are:
 
 
-$ git clone https://github.com/MohamedWael257/Mern-Lava.git
+$ git clone https://github.com/MohamedWael257/mern_lava.git
 $ cd project
 $ npm install
 
