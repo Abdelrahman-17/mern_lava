@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from "mongoose";
 const ServicesSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -16,11 +16,7 @@ const ServicesSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    serviceduration: {
-        type: String,
-        required: true,
-    },
 });
 
 const Services = mongoose.model('services', ServicesSchema);
-module.exports = Services
+export default Services

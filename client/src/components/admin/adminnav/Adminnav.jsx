@@ -27,14 +27,25 @@ const Adminnav = () => {
                             Orders
                         </NavLink>
                     </li>
+
                     <li>
-                        <NavLink to="/admin/all-products" className={activelink}>
-                            All Products
+                        <NavLink to="/admin/all-cars" className={activelink}>
+                            All Cars
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/admin/add-product/Add" className={activelink}>
-                            Add Product
+                        <NavLink to="/admin/add-car/Add" className={activelink}>
+                            Add Car
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/admin/all-accessories" className={activelink}>
+                            All Accessories
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/admin/add-accessory/Add" className={activelink}>
+                            Add Accessory
                         </NavLink>
                     </li>
                     <li>

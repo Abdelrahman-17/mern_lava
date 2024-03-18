@@ -22,7 +22,7 @@ const Security = () => {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [address, setAddress] = useState("")
-    const [phone, setPhone] = useState("")
+    const [phoneNumber, setPhoneNumber] = useState("")
     const [gender, setGender] = useState("")
     const [photoimage, setPhotoimage] = useState("")
     const [activeedit, setActiveedit] = useState(false)
@@ -37,7 +37,7 @@ const Security = () => {
         setUsername(currentUser?.username)
         setEmail(currentUser?.email)
         setAddress(currentUser?.address)
-        setPhone(currentUser?.phone)
+        setPhoneNumber(currentUser?.phoneNumber)
         setImagePreview(currentUser?.photoimage)
         setGender(currentUser?.gender)
     }, [currentUser])
@@ -77,7 +77,8 @@ const Security = () => {
     };
     const save = async (e) => {
         e.preventDefault();
-        const uid = uuid()
+        // const uid = uuid()
+        const uid = currentUser?._id
         const base64Data = imagePreview;
         await axios.post(`${process.env.BASE_API_URL_HOST}/auth/upload-image`, { image: base64Data, uid: uid })
             .then((res) => {
@@ -98,7 +99,7 @@ const Security = () => {
                 setLoading(false)
             })
         if (photoimage) {
-            await axios.post(`${process.env.BASE_API_URL_HOST}/auth/update-user-data`, { email, username, phone, address, fullname, gender, photoimage })
+            await axios.post(`${process.env.BASE_API_URL_HOST}/auth/update-user-data`, { uid, email, username, phoneNumber, address, fullname, gender, photoimage })
                 .then((res) => {
                     // toast.success("check your Email inbox")
                     toast.success(res.data.status)
@@ -140,9 +141,9 @@ const Security = () => {
                             <input type="text" id='address' placeholder={`${activeedit ? 'Enter your Address' : ''}`} disabled={activeedit ? false : true} value={address} onChange={(e) => setAddress(e.target.value)} />
                         </div>
                         <div className={`${activeedit ? 'active input-box' : 'input-box'}`}>
-                            <label htmlFor='phone'>Phone Number </label>
+                            <label htmlFor='phoneNumber'>Phone Number </label>
                             <p> : </p>
-                            <input type="tel" id='phone' placeholder={`${activeedit ? 'Enter your Phone Number' : ''}`} disabled={activeedit ? false : true} value={phone} onChange={(e) => setPhone(e.target.value)} />
+                            <input type="tel" id='phoneNumber' placeholder={`${activeedit ? 'Enter your Phone Number' : ''}`} disabled={activeedit ? false : true} value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
                         </div>
                         <div className={`${activeedit ? 'active input-box' : 'input-box'}`}>
                             <label htmlFor='gender'>Gender </label>

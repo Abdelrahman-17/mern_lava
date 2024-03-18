@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
-const { database } = require('../config/keys');
-const chalk = require('chalk');
+import mongoose from "mongoose";
+import keys from "../config/keys.js";
+const { url } = keys.database
 
-module.exports = connectToMongoDB = async () => {
+export async function ConnectToMongoDB() {
     try {
         // mongoose.set('useCreateIndex', true);
-        await mongoose.connect(database.url)
+        await mongoose.connect(url)
         console.log("Connected to MongoDB ");
         // console.log(`${chalk.green('✓')} ${chalk.blue('Connected to MongoDB !')}`)
 

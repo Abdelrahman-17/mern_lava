@@ -106,7 +106,8 @@ const Chats = ({ selectedUser, currentUser, activetype, setActivetype }) => {
                                                 : "text-black"
                                                 }`}
                                         >
-                                            {message.timestamp}
+                                            {format(message.timestamp, "HH:mm")}
+                                            {/* {message.timestamp} */}
                                             {/* {format(message?.timestamp.toDate(), "HH:mm")} */}
                                         </p>
                                     )}

@@ -5,22 +5,16 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { MdPhotoCameraBack } from 'react-icons/md'
 import { toast } from "react-toastify";
-// import { getDownloadURL, getStorage, ref, uploadString } from "firebase/storage";
 import Loader from '../../loader/Loader'
-import data from '../../../../public/data.json'
 import { getservices, servicesdata } from '../../../redux/slice/serviceslice'
+import { v4 as uuid } from "uuid"
 const Addservice = () => {
     const { id } = useParams();
-    // const [services, setServices] = useState([]);
     const services = useSelector(servicesdata)
-    // useEffect(() => {
-    //     if (data) {
-    //         setServices(data.booking_services)
-    //     }
-    // }, [data])
     const [image, setImage] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
     const [uploading, setUploading] = useState(false);
+    const [imageUrl, setImageUrl] = useState('')
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const serviceEdite = services.find((pro) => pro.id === id);
@@ -67,20 +61,34 @@ const Addservice = () => {
         e.preventDefault();
         if (curentservice.title && curentservice.description && curentservice.serviceprice && curentservice.serviceduration) {
             try {
-                // let imageUrl = null;
-                // if (image) {
-                //     const storage = getStorage();
-                //     const storageRef = ref(storage, image.name);
-                //     setUploading(true)
-                //     await uploadString(storageRef, imagePreview, "data_url");
-                //     imageUrl = await getDownloadURL(storageRef);
-                //     setUploading(false)
-                //     setImage(null);
-                //     setImagePreview(null);
-                // }
+                if (image) {
+                    const uid = uuid()
+                    setUploading(true)
+                    await axios.post(`${process.env.BASE_API_URL_HOST}/auth/upload-image`, { image: image, uid: uid })
+                        .then((res) => {
+                            // console.log(res);
+                            setUploading(false)
+                        })
+                        .catch((err) => {
+                            toast.error(err.message)
+                            setUploading(false)
+                        })
+                    await axios.post(`${process.env.BASE_API_URL_HOST}/auth/get-image`, { uid: uid })
+                        .then((res) => {
+                            // console.log(res)
+                            setImageUrl(res.data.data.image)
+                            setUploading(false)
+                            setImage(null);
+                            setImagePreview(null);
+                        })
+                        .catch((err) => {
+                            toast.error(err.message)
+                            setUploading(false)
+                        })
+                }
                 await axios.post(`${process.env.BASE_API_URL_HOST}/products/add-service`, {
                     title: curentservice.title,
-                    // ImageUrl: imageUrl,
+                    ImageUrl: imageUrl,
                     serviceprice: curentservice.serviceprice,
                     description: curentservice.description,
                     serviceduration: curentservice.serviceduration,
@@ -106,20 +114,34 @@ const Addservice = () => {
         e.preventDefault();
         if (curentservice?.brand && curentservice?.category && curentservice?.description && curentservice?.itemquantity && curentservice?.serviceprice && curentservice?.brand) {
             try {
-                // let imageUrl = null;
-                // if (image) {
-                //     const storage = getStorage();
-                //     const storageRef = ref(storage, image.name);
-                //     setUploading(true);
-                //     await uploadString(storageRef, imagePreview, "data_url");
-                //     imageUrl = await getDownloadURL(storageRef);
-                //     setUploading(false);
-                //     setImage(null);
-                //     setImagePreview(null);
-                // }
+                if (image) {
+                    const uid = uuid()
+                    setUploading(true)
+                    await axios.post(`${process.env.BASE_API_URL_HOST}/auth/upload-image`, { image: image, uid: uid })
+                        .then((res) => {
+                            // console.log(res);
+                            setUploading(false)
+                        })
+                        .catch((err) => {
+                            toast.error(err.message)
+                            setUploading(false)
+                        })
+                    await axios.post(`${process.env.BASE_API_URL_HOST}/auth/get-image`, { uid: uid })
+                        .then((res) => {
+                            // console.log(res)
+                            setImageUrl(res.data.data.image)
+                            setUploading(false)
+                            setImage(null);
+                            setImagePreview(null);
+                        })
+                        .catch((err) => {
+                            toast.error(err.message)
+                            setUploading(false)
+                        })
+                }
                 await axios.put(`${process.env.BASE_API_URL_HOST}/products/add-service/${id}`, {
                     title: curentservice.title,
-                    // ImageUrl: imageUrl,
+                    ImageUrl: imageUrl,
                     serviceprice: curentservice.serviceprice,
                     description: curentservice.description,
                     serviceduration: curentservice.serviceduration,

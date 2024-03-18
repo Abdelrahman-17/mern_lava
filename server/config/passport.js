@@ -1,13 +1,13 @@
-const passport = require('passport');
-const JwtStrategy = require('passport-jwt').Strategy;
-const GoogleStrategy = require('passport-google-oauth2').Strategy;
-const FacebookStrategy = require('passport-facebook').Strategy;
-const GithubStrategy = require('passport-github').Strategy;
-const ExtractJwt = require('passport-jwt').ExtractJwt;
-const User = require('../models/user.model');
+import passport from 'passport';
+import { Strategy as JwtStrategy } from 'passport-jwt';
+import { Strategy as GoogleStrategy } from 'passport-google-oauth2';
+import { Strategy as FacebookStrategy } from 'passport-facebook';
+import { Strategy as GithubStrategy } from 'passport-github';
+import { ExtractJwt } from 'passport-jwt';
+import User from '../models/user.model.js';
 
-const keys = require('./keys');
-const { EMAIL_PROVIDER } = require('../constants/index');
+import keys from './keys.js';
+import { EMAIL_PROVIDER } from '../constants/index.js';
 
 const { google, facebook, github } = keys;
 
@@ -33,7 +33,7 @@ passport.use(
     })
 );
 
-module.exports = async app => {
+export default async app => {
     app.use(passport.initialize());
 
     await googleAuth();
@@ -43,7 +43,6 @@ module.exports = async app => {
 
 const googleAuth = async () => {
     try {
-
         passport.use(
             new GoogleStrategy(
                 {

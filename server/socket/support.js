@@ -1,4 +1,4 @@
-const uuidv4 = require('uuid').v4;
+import { v4 as uuidv4 } from 'uuid';
 
 const users = [];
 const messages = [];
@@ -13,7 +13,7 @@ const updatedUserStatus = (user, status) => {
     }
 };
 
-exports.supportHandler = (io, socket) => {
+export function supportHandler(io, socket) {
     socket.on('connectUser', async () => {
         const user = findUserBySocketId(socket.id);
 
@@ -81,7 +81,9 @@ exports.supportHandler = (io, socket) => {
     socket.on('connect_error', err => {
         console.log(`connect_error due to ${err.message}`);
     });
-};
+}
 
-exports.users = users;
-exports.findUserById = findUserById;
+const _users = users;
+export { _users as users };
+const _findUserById = findUserById;
+export { _findUserById as findUserById };

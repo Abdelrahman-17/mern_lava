@@ -8,8 +8,8 @@ const Aboutt = () => {
         <>
             <Heroabout />
             <About />
-            <Ourtrust />
-            <Latestupdate />
+            {/* <Ourtrust /> */}
+            {/* <Latestupdate /> */}
         </>
     )
 }

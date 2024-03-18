@@ -16,7 +16,7 @@ const Signup = () => {
     // const [lastname, setLastname] = useState("");
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
     const [password, setPassword] = useState("");
     // const [cPassword, setcPassword] = useState("");
     // const [image, setImage] = useState(null);
@@ -63,13 +63,13 @@ const Signup = () => {
                 setLoading(false)
             })
 
-        if (!username || !email || !phone || !password) {
+        if (!username || !email || !phoneNumber || !password) {
             setLoading(false)
             toast.error("Please fill the form")
         }
         else {
-            // await axios.post('http://localhost:5000/${process.env.BASE_API_URL_HOST}/auth/register', { username, email, phone, password })
-            await axios.post(`${process.env.BASE_API_URL_HOST}/auth/register`, { username, email, phone, password, photoimage })
+            // await axios.post('http://localhost:5000/${process.env.BASE_API_URL_HOST}/auth/register', { username, email, phoneNumber, password })
+            await axios.post(`${process.env.BASE_API_URL_HOST}/auth/register`, { username, email, phoneNumber, password, photoimage })
                 // .then(res => console.log(res.data))
                 .then((res) => {
                     console.log(res.data);
@@ -99,33 +99,28 @@ const Signup = () => {
 
     }
 
-    // const handleGoogleSignup = async () => {
-    //     try {
-    //         const provider = new GoogleAuthProvider();
-    //         const userCredential = await signInWithPopup(auth, provider);
-    //         const user = userCredential.user;
-    //         await updateProfile(user, {
-    //             displayName: user.displayName,
-    //             photoURL: user.photoURL,
-    //             phoneNumber: ''
-    //         });
-    //         await setDoc(doc(db, "users", user.uid), {
-    //             uid: user.uid,
-    //             fullName: '',
-    //             displayName: user.displayName,
-    //             email: user.email,
-    //             address: '',
-    //             photoURL: user.photoURL,
-    //             phoneNumber: ''
-    //             // password: user.reloadUserInfo.passwordHash,
-    //         });
-    //         // navigate("/");
-    //         toast.success("Signin successfully");
+    const [token, setToken] = useState('');
 
-    //     } catch (error) {
-    //         toast.error(error);
-    //     }
-    // };
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const token = params.get('token');
+        setToken(token);
+    }, []);
+
+    useEffect(() => {
+        if (token) {
+            // Save the token to local storage or state for future use
+            // You can also redirect the user to the home page or perform other actions
+            toast.success("Signin successfully");
+            cookies.set("TOKEN", token, {
+                path: "/",
+            });
+            // window.localStorage.setItem("token", res.data.data);
+            // window.localStorage.setItem("loggedIn", true);
+            window.location.href = "/";
+
+        }
+    }, [token])
     return (
         <>
             {/* <ToastContainer /> */}
@@ -174,11 +169,11 @@ const Signup = () => {
                                     <label>Email</label>
                                 </div>
                                 <div className="input-box">
-                                    <span className="errorphone error text-danger"></span>
+                                    <span className="errorphoneNumber error text-danger"></span>
                                     <span className="icon">
                                         <ion-icon name="call"></ion-icon> </span>
-                                    <input type="tel" name="Phone" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} required />
-                                    <label>Phone</label>
+                                    <input type="tel" name="phoneNumber" id="phoneNumber" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
+                                    <label>phoneNumber</label>
                                 </div>
                                 <div className="input-box">
                                     <span className="errorpassword error text-danger"></span>
@@ -233,15 +228,20 @@ const Signup = () => {
                                 <p className='text-black'>OR</p>
                                 <hr className="w-full border-slate-300" />
                             </div>
-                            <button
-                                className="flex  bg-[#477cff] text-white w-full justify-between py-2 px-4 rounded shadow font-semibold"
+                            <div className="flex text-black w-2/3 mx-auto justify-evenly py-2 px-4 rounded shadow font-semibold">
+                                <a className='' href={`${process.env.BASE_API_URL_HOST}/passport/google`}>
+                                    <FcGoogle size={33} />
 
-                            >
-                                {/* <GoogleIcon /> */}
-                                <BsGoogle size={20} />
-                                <span>Continue with Google</span>
-                                <span></span>
-                            </button>
+                                </a>
+
+                                <a className='text-[#477cff]' href={`${process.env.BASE_API_URL_HOST}/passport/facebook`}>
+                                    <FaFacebook size={30} />
+                                </a>
+                                <a className='' href={`${process.env.BASE_API_URL_HOST}/passport/github`}>
+                                    <FaGithub size={30} />
+
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

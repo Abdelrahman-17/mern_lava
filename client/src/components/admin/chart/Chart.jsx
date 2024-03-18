@@ -23,19 +23,21 @@ ChartJS.register(
 
 const Chart = (props) => {
     const { order } = props;
-    const mintwo = order.filter((ord) => ord.orderamount <= 2000).length
-    const maxtwo = order.filter((ord) => ord.orderamount > 2000 && ord.orderamount < 5000).length
-    const maxten = order.filter((ord) => ord.orderamount > 5000 && ord.orderamount <= 10000).length
-    const maxfifteen = order.filter((ord) => ord.orderamount > 10000 && ord.orderamount <= 15000).length
-    const maxtwenty = order.filter((ord) => ord.orderamount > 15000 && ord.orderamount <= 20000).length
+    const mintwo = order.filter((ord) => ord.orderamount <= 1600).length
+    const maxtwo = order.filter((ord) => ord.orderamount > 1600 && ord.orderamount < 3000).length
+    const minten = order.filter((ord) => ord.orderamount > 260000 && ord.orderamount <= 3600000).length
+    const maxten = order.filter((ord) => ord.orderamount > 360000 && ord.orderamount <= 720000).length
+    const maxfifteen = order.filter((ord) => ord.orderamount > 720000 && ord.orderamount <= 1080000).length
+    const mintwenty = order.filter((ord) => ord.orderamount > 1080000 && ord.orderamount <= 1440000).length
+    const maxtwenty = order.filter((ord) => ord.orderamount > 1440000 && ord.orderamount <= 1800000).length
 
     const data = {
-        labels: ["2000>order>0", "5000>order>2000", "10000>order>5000", "15000>order>10000", "20000>order>15000",],
+        labels: ["1600>order>0", "2800>order>1600", "360000>order>260000", "720000>order>360000", "1080000>order>720000", "1440000>order>1080000", "1800000>order>1440000",],
         datasets: [
             {
                 label: "Order earn",
-                data: [mintwo, maxtwo, maxten, maxfifteen, maxtwenty],
-                backgroundColor: ["orangered", "#ff7722", "#1f93ff", "#9d0191", "#ff7722"],
+                data: [mintwo, maxtwo, minten, maxten, maxfifteen, mintwenty, maxtwenty],
+                backgroundColor: ["orangered", "#ff7722", "#02e72c", "#1f93ff", "#9d0191", "#02e72c", "#e9d605"],
             },
         ],
     }

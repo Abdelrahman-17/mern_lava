@@ -1,5 +1,10 @@
-const mongoose = require('mongoose')
+import mongoose from "mongoose";
+
 const NotificationSchema = new mongoose.Schema({
+    uid: {
+        type: String,
+        required: true
+    },
     title: {
         type: String,
         required: true,
@@ -13,12 +18,10 @@ const NotificationSchema = new mongoose.Schema({
         required: true,
     },
     date: {
-        // type: Date,
-        // default: Date.now
         type: String,
         required: true
     }
 });
 
 const Notification = mongoose.model('notification', NotificationSchema);
-module.exports = Notification
+export default Notification

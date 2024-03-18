@@ -1,14 +1,6 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose';
 const AccessoriesSchema = new mongoose.Schema({
     title: {
-        type: String,
-        required: true,
-    },
-    brand: {
-        type: String,
-        required: true,
-    },
-    category: {
         type: String,
         required: true,
     },
@@ -16,23 +8,23 @@ const AccessoriesSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    favourit: {
-        type: String,
-        required: true,
-    },
     itemquantity: {
         type: Number,
+        required: true,
+    },
+    favourit: {
+        type: Boolean,
         required: true,
     },
     price: {
         type: Number,
         required: true,
     },
-    thumbnail: {
+    ImageUrl: {
         type: String,
         required: true,
     },
 });
 
 const Accessories = mongoose.model('accessories', AccessoriesSchema);
-module.exports = Accessories
+export default Accessories

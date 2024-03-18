@@ -1,7 +1,7 @@
-const { Vonage } = require('@vonage/server-sdk')
+import { Vonage } from '@vonage/server-sdk';
 // const template = require('../config/template');
-const keys = require('../config/keys');
-const { default: axios } = require('axios');
+import keys from '../config/keys';
+import { default as axios } from 'axios';
 
 const { Key, apisecret, sender } = keys.vonage;
 
@@ -20,7 +20,7 @@ class VonageService {
 }
 const vonage = new VonageService().init();
 
-exports.sendSMS = async (phone, type, host, data) => {
+export async function sendSMS(phone, type, host, data) {
     try {
         // const message = prepareTemplate(type, host, data);
         const message = 'A text message sent using the Vonage SMS API'
@@ -34,7 +34,7 @@ exports.sendSMS = async (phone, type, host, data) => {
     } catch (error) {
         return error;
     }
-};
+}
 async function send() {
 
     await axios.post(

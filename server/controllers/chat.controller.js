@@ -1,8 +1,8 @@
-const Chats = require("../models/chats.model");
+import Chats from "../models/chats.model.js";
 // const User = require('../models/user.model')
-const installTimestamp = require('install-timestamp');
+import installTimestamp from 'install-timestamp';
 const ts = installTimestamp();
-const add_chat = async (req, res) => {
+export const add_chat = async (req, res) => {
     const { senderId, receiverId, message } = req.body;
     try {
         await Chats.create({
@@ -18,7 +18,7 @@ const add_chat = async (req, res) => {
         res.send({ status: "Error Payment" });
     }
 }
-const chatsData = async (req, res) => {
+export const chatsData = async (req, res) => {
     const { userid, selectedid } = req.body;
     try {
         const allChats = await Chats.find({ 'senderId': { $in: [`${userid}`, `${selectedid}`] }, 'receiverId': { $in: [`${userid}`, `${selectedid}`] } });
@@ -28,7 +28,7 @@ const chatsData = async (req, res) => {
         // res.status(500).json({ message: 'Failed to retrieve chats' });
     }
 }
-const clear_chat = async (req, res) => {
+export const clear_chat = async (req, res) => {
     const { userid, selectedid } = req.body;
     try {
         await Chats.deleteMany({ 'senderId': { $in: [`${userid}`, `${selectedid}`] }, 'receiverId': { $in: [`${userid}`, `${selectedid}`] } });
@@ -44,4 +44,3 @@ const clear_chat = async (req, res) => {
         res.send({ status: "Error", data: 'Failed to Clearing chats' });
     }
 }
-module.exports = { add_chat, chatsData, clear_chat }

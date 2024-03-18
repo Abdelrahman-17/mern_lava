@@ -35,7 +35,7 @@ const Cart = () => {
                                     <Fragment key={index}>
                                         <div className="cart">
                                             <div className="img w-25 me-4">
-                                                <img src={ele.thumbnail} className="w-100 h-50" alt="" />
+                                                <img src={ele.ImageUrl} className="w-100 h-50" alt="" />
                                             </div>
                                             <div className="card-details">
                                                 <div className="title">
@@ -106,7 +106,7 @@ const Cart = () => {
                             {favourit.map((ele, index) => {
                                 return (
                                     <div key={index} className='favourit-card'>
-                                        <img src={ele.thumbnail} />
+                                        <img src={ele.ImageUrl} />
                                         <p>Product : {ele.title}</p>
                                         <p>Category : {ele.category}</p>
                                         <IoIosHeart onClick={() => deletefromfavoruit(ele)} color='red' size={35} />

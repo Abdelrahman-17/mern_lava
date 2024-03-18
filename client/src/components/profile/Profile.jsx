@@ -5,8 +5,8 @@ import { Route, Routes } from 'react-router-dom'
 import OrdersPage from '../../pages/orderspage/OrdersPage'
 import SecurityPage from '../../pages/securitypage/SecurityPage'
 import ChatPage from '../../pages/chatpage/ChatPage'
-import { NotificationPage } from 'twilio/lib/rest/api/v2010/account/notification'
-
+import Notification from '../notification/Notification'
+import BookingOrdersPage from '../../pages/orderspage/BookingOrdersPage'
 const Profile = () => {
     const [activeside, setActiveside] = useState(false)
     return (
@@ -20,8 +20,9 @@ const Profile = () => {
                 <div className='content'>
                     <Routes>
                         <Route path="orders" element={<OrdersPage />} />
+                        <Route path="booking" element={<BookingOrdersPage />} />
                         <Route path="security" element={<SecurityPage />} />
-                        <Route path="notification" element={<NotificationPage />} />
+                        <Route path="notification" element={<Notification />} />
                         <Route path="chat" element={<ChatPage />} />
                     </Routes>
                 </div>

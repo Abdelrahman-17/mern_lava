@@ -13,7 +13,7 @@ const Otp = () => {
     const confirm = async (e) => {
         e.preventDefault()
         if (keyvalue === key) {
-            await axios.post(`http://localhost:5000/send-sms`, { phoneNumber: "01010055884" })
+            // await axios.post(`http://localhost:5000/send-sms`, { phoneNumber: "01010055884" })
             await axios.get(`${process.env.BASE_API_URL_HOST}/auth/verify/${token}`)
                 .then(res => console.log(res.data))
                 .catch(err => console.log(err))

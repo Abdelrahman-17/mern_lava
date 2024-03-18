@@ -1,7 +1,7 @@
-const Mailgun = require('mailgun-js');
+import Mailgun from 'mailgun-js';
 
-const template = require('../config/template');
-const keys = require('../config/keys');
+import { resetEmail, confirmResetPasswordEmail, signupEmail, merchantSignup, merchantWelcome, newsletterSubscriptionEmail, contactEmail, merchantApplicationEmail, merchantDeactivateAccount, orderConfirmationEmail } from '../config/template';
+import keys from '../config/keys';
 
 const { key, domain, sender } = keys.mailgun;
 
@@ -20,7 +20,7 @@ class MailgunService {
 
 const mailgun = new MailgunService().init();
 
-exports.sendEmail = async (email, type, host, data) => {
+export async function sendEmail(email, type, host, data) {
     try {
         const message = prepareTemplate(type, host, data);
 
@@ -35,50 +35,50 @@ exports.sendEmail = async (email, type, host, data) => {
     } catch (error) {
         return error;
     }
-};
+}
 
 const prepareTemplate = (type, host, data) => {
     let message;
 
     switch (type) {
         case 'reset':
-            message = template.resetEmail(host, data);
+            message = resetEmail(host, data);
             break;
 
         case 'reset-confirmation':
-            message = template.confirmResetPasswordEmail();
+            message = confirmResetPasswordEmail();
             break;
 
         case 'signup':
-            message = template.signupEmail(data);
+            message = signupEmail(data);
             break;
 
         case 'merchant-signup':
-            message = template.merchantSignup(host, data);
+            message = merchantSignup(host, data);
             break;
 
         case 'merchant-welcome':
-            message = template.merchantWelcome(data);
+            message = merchantWelcome(data);
             break;
 
         case 'newsletter-subscription':
-            message = template.newsletterSubscriptionEmail();
+            message = newsletterSubscriptionEmail();
             break;
 
         case 'contact':
-            message = template.contactEmail();
+            message = contactEmail();
             break;
 
         case 'merchant-application':
-            message = template.merchantApplicationEmail();
+            message = merchantApplicationEmail();
             break;
 
         case 'merchant-deactivate-account':
-            message = template.merchantDeactivateAccount();
+            message = merchantDeactivateAccount();
             break;
 
         case 'order-confirmation':
-            message = template.orderConfirmationEmail(data);
+            message = orderConfirmationEmail(data);
             break;
 
         default:

@@ -9,6 +9,7 @@ import { AuthContext } from '../../context/AuthContext'
 import { cartitem, clearcart, totalprice } from '../../redux/slice/cartslice'
 import { getorders } from '../../redux/slice/orderslice';
 import axios from 'axios';
+import { getNotification } from '../../redux/slice/notificationslice';
 // import { getNotification } from '../../redux/slice/notificationslice';
 const Checkout = () => {
     const cart = useSelector(cartitem);
@@ -38,8 +39,9 @@ const Checkout = () => {
         toast.success("Payment successful", {
             position: "top-right",
         });
-        await axios.post(`${process.env.BASE_API_URL_HOST}/notification/add_notification`,
-            { date: dateTime, price: totprice, title: 'cart', description: 'cart' })
+        const time = Date.now()
+        await axios.post(`${process.env.BASE_API_URL_HOST}/notification/add-notification`,
+            { uid: currentUser?._id, date: time, price: totprice, title: 'cart', description: 'cart' })
             .then(res => console.log(res))
             .catch(err => console.log(err))
         dispatch(getNotification());
@@ -47,6 +49,7 @@ const Checkout = () => {
             position: "bottom-right",
         });
         navigate("/")
+        // navigate("/profile/notification")
         // navigate('/orders')
 
     }

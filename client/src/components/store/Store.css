@@ -1,3 +1,34 @@
+.select-category button {
+    font-size: 1.2rem;
+    position: relative;
+    transition: .3s color;
+}
+
+.select-category button::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: -25px;
+    /* left: -50%; */
+    width: 0px;
+    height: 2px;
+    background-color: #263787;
+    transition: .4s width;
+}
+
+.select-category button:nth-child(2):after {
+    left: -35px;
+}
+
+.select-category button.active::after {
+
+    width: 100px;
+}
+
+.select-category button.active:nth-child(2):after {
+    width: 180px;
+}
+
 .storing {
     display: grid;
     grid-template-columns: 1fr 3fr;

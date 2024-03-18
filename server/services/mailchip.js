@@ -1,6 +1,6 @@
-const Mailchimp = require('mailchimp-api-v3');
+import Mailchimp from 'mailchimp-api-v3';
 
-const keys = require('../config/keys');
+import keys from '../config/keys';
 
 const { key, listKey } = keys.mailchimp;
 
@@ -16,7 +16,7 @@ class MailchimpService {
 
 const mailchimp = new MailchimpService().init();
 
-exports.subscribeToNewsletter = async email => {
+export async function subscribeToNewsletter(email) {
     try {
         return await mailchimp.post(`lists/${listKey}/members`, {
             email_address: email,
@@ -25,4 +25,4 @@ exports.subscribeToNewsletter = async email => {
     } catch (error) {
         return error;
     }
-};
+}

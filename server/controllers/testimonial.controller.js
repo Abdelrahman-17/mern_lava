@@ -1,7 +1,6 @@
-const Testimonial = require("../models/testimonial.model");
-const User = require("../models/user.model");
-// const User = require('../models/user.model')
-const send_testimonial = async (req, res) => {
+import User from "../models/user.model.js";
+import Testimonial from '../models/testimonial.model.js'
+export const send_testimonial = async (req, res) => {
     const { uid, firstname, lastname, email, phone, message, date, photoimage } = req.body;
     try {
         const oldUser = User.find({ email })
@@ -9,7 +8,7 @@ const send_testimonial = async (req, res) => {
             return res.json({ error: "User Exists" });
         }
         await Testimonial.create({
-            _id, uid,
+            _id: uid,
             firstname,
             lastname,
             email,
@@ -25,7 +24,7 @@ const send_testimonial = async (req, res) => {
         res.send({ status: "Error Sending" });
     }
 }
-const testimonialData = async (req, res) => {
+export const testimonialData = async (req, res) => {
     // const { userID } = req.body;
     try {
         const allTestimonial = await Testimonial.find({})
@@ -41,7 +40,7 @@ const testimonialData = async (req, res) => {
         // res.status(500).json({ message: 'Failed to retrieve Testimonial' });
     }
 }
-const clear_testimonial = async (req, res) => {
+export const clear_testimonial = async (req, res) => {
     const { selectedid } = req.body;
     try {
         await Testimonial.deleteMany({ 'senderId': { $in: `${selectedid}` } });
@@ -51,4 +50,4 @@ const clear_testimonial = async (req, res) => {
         res.send({ status: "Error", data: 'Failed to Clearing Testimonial' });
     }
 }
-module.exports = { send_testimonial, clear_testimonial, testimonialData }
+export default { send_testimonial, clear_testimonial, testimonialData }

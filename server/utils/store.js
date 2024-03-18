@@ -1,7 +1,7 @@
-const Product = require('../models/product');
-const taxConfig = require('../config/tax');
+import { bulkWrite } from '../models/product';
+import { stateTaxRate } from '../config/tax';
 
-exports.disableProducts = products => {
+export function disableProducts(products) {
     let bulkOptions = products.map(item => {
         return {
             updateOne: {
@@ -11,13 +11,13 @@ exports.disableProducts = products => {
         };
     });
 
-    Product.bulkWrite(bulkOptions);
-};
+    bulkWrite(bulkOptions);
+}
 
 // calculate order tax amount
-exports.caculateTaxAmount = order => {
+export function caculateTaxAmount(order) {
     try {
-        const taxRate = taxConfig.stateTaxRate;
+        const taxRate = stateTaxRate;
 
         order.totalTax = 0;
         if (order.products && order.products.length > 0) {
@@ -70,19 +70,19 @@ exports.caculateTaxAmount = order => {
     } catch (error) {
         return order;
     }
-};
+}
 
-exports.caculateOrderTotal = order => {
+export function caculateOrderTotal(order) {
     const total = order.products
         .filter(item => item.status !== 'Cancelled')
         .reduce((sum, current) => sum + current.totalPrice, 0);
 
     return total;
-};
+}
 
 // calculate order tax amount
-exports.caculateItemsSalesTax = items => {
-    const taxRate = taxConfig.stateTaxRate;
+export function caculateItemsSalesTax(items) {
+    const taxRate = stateTaxRate;
 
     const products = items.map(item => {
         item.priceWithTax = 0;
@@ -107,9 +107,9 @@ exports.caculateItemsSalesTax = items => {
     });
 
     return products;
-};
+}
 
-exports.formatOrders = orders => {
+export function formatOrders(orders) {
     const newOrders = orders.map(order => {
         return {
             _id: order._id,
@@ -122,4 +122,4 @@ exports.formatOrders = orders => {
     return newOrders.map(order => {
         return order?.products ? this.caculateTaxAmount(order) : order;
     });
-};
+}

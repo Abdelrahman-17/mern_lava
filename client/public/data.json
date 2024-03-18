@@ -1948,7 +1948,7 @@
     "cars": [
         {
             "id": "0",
-            "name": "sport",
+            "bodyStyle": "sport",
             "model": [
                 "2x",
                 "3x",
@@ -1968,7 +1968,7 @@
         },
         {
             "id": "1",
-            "name": "sport",
+            "bodyStyle": "sport",
             "model": [
                 "2x",
                 "3x",
@@ -1988,7 +1988,7 @@
         },
         {
             "id": "2",
-            "name": "sport",
+            "bodyStyle": "sport",
             "model": [
                 "2x",
                 "3x",
@@ -2008,7 +2008,7 @@
         },
         {
             "id": "3",
-            "name": "sport",
+            "bodyStyle": "sport",
             "model": [
                 "2x",
                 "3x",

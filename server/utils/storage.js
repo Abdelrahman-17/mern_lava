@@ -1,20 +1,20 @@
-const AWS = require('aws-sdk');
+import { S3 } from 'aws-sdk';
 
-const keys = require('../config/keys');
+import { aws } from '../config/keys';
 
-exports.s3Upload = async image => {
+export async function s3Upload(image) {
     let imageUrl = '';
     let imageKey = '';
 
     if (image) {
-        const s3bucket = new AWS.S3({
-            accessKeyId: keys.aws.accessKeyId,
-            secretAccessKey: keys.aws.secretAccessKey,
-            region: keys.aws.region
+        const s3bucket = new S3({
+            accessKeyId: aws.accessKeyId,
+            secretAccessKey: aws.secretAccessKey,
+            region: aws.region
         });
 
         const params = {
-            Bucket: keys.aws.bucketName,
+            Bucket: aws.bucketName,
             Key: image.originalname,
             Body: image.buffer,
             ContentType: image.mimetype
@@ -27,4 +27,4 @@ exports.s3Upload = async image => {
     }
 
     return { imageUrl, imageKey };
-};
+}

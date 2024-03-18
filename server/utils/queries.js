@@ -1,6 +1,6 @@
-const Mongoose = require('mongoose');
+import { Types } from 'mongoose';
 
-exports.getStoreProductsQuery = (min, max, rating) => {
+export function getStoreProductsQuery(min, max, rating) {
     rating = Number(rating);
     max = Number(max);
     min = Number(min);
@@ -80,9 +80,9 @@ exports.getStoreProductsQuery = (min, max, rating) => {
     ];
 
     return basicQuery;
-};
+}
 
-exports.getStoreProductsWishListQuery = userId => {
+export function getStoreProductsWishListQuery(userId) {
     const wishListQuery = [
         {
             $lookup: {
@@ -93,7 +93,7 @@ exports.getStoreProductsWishListQuery = userId => {
                         $match: {
                             $and: [
                                 { $expr: { $eq: ['$$product', '$product'] } },
-                                { user: new Mongoose.Types.ObjectId(userId) }
+                                { user: new Types.ObjectId(userId) }
                             ]
                         }
                     }
@@ -109,4 +109,4 @@ exports.getStoreProductsWishListQuery = userId => {
     ];
 
     return wishListQuery;
-};
+}

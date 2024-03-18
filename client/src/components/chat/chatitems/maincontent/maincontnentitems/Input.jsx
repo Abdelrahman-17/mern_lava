@@ -37,12 +37,14 @@ const Input = ({ selectedUser, currentUser, activetype, setActivetype }) => {
             //     setImage(null);
             //     setImagePreview(null);
             // }
+            const serverTimestamp = new Date().toISOString();
+
             await axios.post(`${process.env.BASE_API_URL_HOST}/chat/add-chat`, {
                 senderId: currentUser?._id,
                 receiverId: selectedUser._id,
                 message,
                 // imageUrl,
-                // timestamp: serverTimestamp()
+                timestamp: serverTimestamp
             })
                 .then(res => toast.success(res.data))
                 .catch(err => toast.error(err.message))

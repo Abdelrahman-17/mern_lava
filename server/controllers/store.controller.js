@@ -1,6 +1,6 @@
-const Orders = require('../models/orders.model')
+import Orders from '../models/orders.model.js';
 // const User = require('../models/user.model')
-const checkout = async (req, res) => {
+export const checkout = async (req, res) => {
     const { orderamount, orderdate, uid, orderitem } = req.body;
     try {
         await Orders.create({
@@ -15,7 +15,7 @@ const checkout = async (req, res) => {
         res.send({ status: "Error Payment" });
     }
 }
-const ordersData = async (req, res) => {
+export const ordersData = async (req, res) => {
     try {
         const orders = await Orders.find();
         res.status(200).json(orders);
@@ -23,4 +23,4 @@ const ordersData = async (req, res) => {
         res.status(500).json({ message: 'Failed to retrieve Orders' });
     }
 }
-module.exports = { checkout, ordersData }
+export default { checkout, ordersData }

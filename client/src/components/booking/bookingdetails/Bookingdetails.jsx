@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import '../Booking.css'
 import { ToastContainer, toast } from 'react-toastify'
-import data from '../../../../public/data.json'
+// import data from '../../../../public/data.json'
+
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addservicetobooking, bookingitem, confirmbookingdetails, datetime, totalprice } from '../../../redux/slice/bookingslice'
@@ -13,12 +14,14 @@ import image4 from '../../../assets/car.png'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { servicesdata } from '../../../redux/slice/serviceslice'
+import { carsdata } from '../../../redux/slice/carsslice'
 
 const Bookingdetails = () => {
     // const [active, setActive] = useState(false)
     // const [services, setServices] = useState([])
     const services = useSelector(servicesdata)
-    const [cars, setCars] = useState([])
+    // const [cars, setCars] = useState([])
+    const cars = useSelector(carsdata)
     const [bodystyle, setBodystyle] = useState(null)
     const [typebrand, setTypebrand] = useState('')
     const [typemodel, setTypemodel] = useState('')
@@ -38,12 +41,12 @@ const Bookingdetails = () => {
             }
         })
     }, [bookingservices])
-    useEffect(() => {
-        if (data) {
-            // setServices(data.booking_services)
-            setCars(data.cars)
-        }
-    }, [data])
+    // useEffect(() => {
+    //     if (data) {
+    //         // setServices(data.booking_services)
+    //         setCars(data.cars)
+    //     }
+    // }, [data])
     const { id } = useParams();
     const productdetails = services.filter((pro) => pro.id === id);
     const serviceprice = +productdetails[0]?.serviceprice
@@ -52,7 +55,7 @@ const Bookingdetails = () => {
         setTypemodel('')
         setTypecolor('')
         // dispatch(adddetailstobooking(ele));
-        const res = cars.filter(obj => obj.name === ele)
+        const res = cars.filter(obj => obj.bodyStyle === ele)
         setBodystyle(res)
     }
     useEffect(() => {
@@ -63,17 +66,19 @@ const Bookingdetails = () => {
     }, [productdetails])
     const brand = [
         "Brand",
-        ...new Set(bodystyle?.map((car) => car.brand)),
+        ...new Set(bodystyle?.map((car) => car.title)),
     ];
     const selectBrand = (ele) => {
         setTypebrand(ele)
         // dispatch(adddetailstobooking(ele));
-        const resmodel = bodystyle.filter(obj => obj.brand === ele)
+        const resmodel = bodystyle.filter(obj => obj.title === ele)
         resmodel.map(ele => setModel(ele.model))
-        const rescolor = bodystyle.filter(obj => obj.brand === ele)
+        const rescolor = bodystyle.filter(obj => obj.title === ele)
         rescolor.map(ele => setColor(ele.color))
-        const resprice = bodystyle.filter(obj => obj.brand === ele)
-        resprice.map(ele => setTotprice(+ele.price + +serviceprice))
+        const resprice = bodystyle.filter(obj => obj.title === ele)
+        resprice.map(ele => setTotprice(+ele.serviceprice + +serviceprice))
+
+        // resprice.map(ele => setTotprice(+ele.price + +serviceprice))
         // totprice += resmodel.map(ele => ele.price)
         // resmodel.push(res)
         // console.log('resmodel', resmodel);
@@ -218,7 +223,7 @@ const Bookingdetails = () => {
                                                 // filterbycategory(e.target.value);
                                             }}>
                                                 <option value="model">Model</option>
-                                                {model.map((cat, index) => {
+                                                {model && model.map((cat, index) => {
                                                     return (
                                                         <option key={index} value={cat}>{cat}</option>
                                                     )
@@ -232,7 +237,7 @@ const Bookingdetails = () => {
                                         <>
                                             <label htmlFor="">car Color</label>
                                             <div className="color flex">
-                                                {color.map((cat, index) => {
+                                                {color && color.map((cat, index) => {
                                                     return (
                                                         <p key={index} className={`w-10 h-10 mx-2 rounded-full cursor-pointer border-white  border-2`} style={{ backgroundColor: `${cat}` }} onClick={() => setTypecolor(cat)}></p>
                                                         // <option key={index} value={cat}>{cat}</option>

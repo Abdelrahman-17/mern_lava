@@ -38,8 +38,17 @@
 }
 
 .home-about .home-content h2 {
-    font-size: 4rem;
+    font-size: 2rem;
+    background-color: #2DB7FF;
     margin-bottom: 10px;
+    width: fit-content;
+    margin: 5px auto;
+    padding: 10px 20px;
+    border-radius: 15px;
+}
+
+.home-about .home-content h2 a {
+    color: #263787;
 }
 
 .home-about .home-content p {

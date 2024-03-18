@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/navbar/Navbar'
 import HomePage from './pages/homepage/HomePage'
 import Footer from './components/footer/Footer'
@@ -26,7 +27,6 @@ import Bookingconfirm from './components/booking/bookingconfirm/Bookingconfirm'
 import ContactPage from './pages/Contactpage/ContactPage'
 import { AuthContext } from './context/AuthContext'
 import { useDispatch } from 'react-redux'
-import { getProducts } from './redux/slice/productslice'
 import { getorders } from './redux/slice/orderslice'
 import { getNotification } from './redux/slice/notificationslice'
 import { ToastContainer } from 'react-toastify'
@@ -35,11 +35,13 @@ import { getservices } from './redux/slice/serviceslice'
 import Resetpassword from './components/auth/Resetpassword'
 import Forgetpassword from './components/auth/Forgetpassword'
 import Otp from './components/auth/Otp'
-import { NotificationPage } from 'twilio/lib/rest/api/v2010/account/notification'
+import { getCars } from './redux/slice/carsslice';
+import { getAccessories } from './redux/slice/accessoriesslice';
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getProducts());
+    dispatch(getCars())
+    dispatch(getAccessories())
     dispatch(getorders());
     dispatch(getbooking());
     dispatch(getservices())
@@ -90,7 +92,7 @@ const App = () => {
             <Route path='/about' element={currentUser ? <AboutPage /> : <LoginPage />} />
             <Route path='/team' element={currentUser ? <TeamPage /> : <LoginPage />} />
             <Route path='/contact' element={currentUser ? <ContactPage /> : <LoginPage />} />
-            <Route path='/notification' element={currentUser ? <NotificationPage /> : <LoginPage />} />
+            {/* <Route path='/notification' element={currentUser ? <NotificationPage /> : <LoginPage />} /> */}
             {
               currentUser?.email === "admin@gmail.com" &&
               <Route path='/admin/*' element={<Admin />} />

@@ -1,12 +1,17 @@
-const socketio = require('socket.io');
-const jwt = require('jsonwebtoken');
-const mongoose = require('mongoose');
+// "dev": "next dev",
+// "build": "next build",
+// "start": "next start",
+// "lint": "next lint",
+// "node": "node server.js"
+import socketio from 'socket.io';
+import { verify } from 'jsonwebtoken';
+import { model } from 'mongoose';
 
-const { ROLES } = require('../constants');
-const keys = require('../config/keys');
-const User = mongoose.model('User');
+import { ROLES } from '../constants';
+import { jwt as _jwt } from '../config/keys';
+const User = model('User');
 
-const support = require('./support');
+import { findUserById, users, supportHandler } from './support';
 
 const authHandler = async (socket, next) => {
     const { token = null } = socket.handshake.auth;
@@ -16,8 +21,8 @@ const authHandler = async (socket, next) => {
             return next(new Error('no token'));
         }
 
-        const { secret } = keys.jwt;
-        const payload = jwt.verify(tokenValue, secret);
+        const { secret } = _jwt;
+        const payload = verify(tokenValue, secret);
         const id = payload.id.toString();
         const user = await User.findById(id);
 
@@ -34,9 +39,9 @@ const authHandler = async (socket, next) => {
             messages: []
         };
 
-        const existingUser = support.findUserById(id);
+        const existingUser = findUserById(id);
         if (!existingUser) {
-            support.users.push(u);
+            users.push(u);
         } else {
             existingUser.socketId = socket.id;
         }
@@ -59,10 +64,10 @@ const socket = server => {
     io.use(authHandler);
 
     const onConnection = socket => {
-        support.supportHandler(io, socket);
+        supportHandler(io, socket);
     };
 
     io.on('connection', onConnection);
 };
 
-module.exports = socket;
+export default socket;

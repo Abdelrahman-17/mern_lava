@@ -1,4 +1,4 @@
-exports.resetEmail = (host, resetToken) => {
+export function resetEmail(host, resetToken) {
     const message = {
         subject: 'Reset Password',
         text:
@@ -10,9 +10,9 @@ exports.resetEmail = (host, resetToken) => {
     };
 
     return message;
-};
+}
 
-exports.confirmResetPasswordEmail = () => {
+export function confirmResetPasswordEmail() {
     const message = {
         subject: 'Password Changed',
         text:
@@ -21,9 +21,9 @@ exports.confirmResetPasswordEmail = () => {
     };
 
     return message;
-};
+}
 
-exports.merchantSignup = (host, { resetToken, email }) => {
+export function merchantSignup(host, { resetToken, email }) {
     const message = {
         subject: 'Merchant Registration',
         text: `${'Congratulations! Your application has been accepted. Please complete your Merchant account signup by clicking on the link below. \n\n' +
@@ -33,9 +33,9 @@ exports.merchantSignup = (host, { resetToken, email }) => {
     };
 
     return message;
-};
+}
 
-exports.merchantWelcome = name => {
+export function merchantWelcome(name) {
     const message = {
         subject: 'Merchant Registration',
         text:
@@ -44,18 +44,18 @@ exports.merchantWelcome = name => {
     };
 
     return message;
-};
+}
 
-exports.signupEmail = name => {
+export function signupEmail(name) {
     const message = {
         subject: 'Account Registration',
         text: `Hi ${name.firstName} ${name.lastName}! Thank you for creating an account with us!.`
     };
 
     return message;
-};
+}
 
-exports.newsletterSubscriptionEmail = () => {
+export function newsletterSubscriptionEmail() {
     const message = {
         subject: 'Newsletter Subscription',
         text:
@@ -64,27 +64,27 @@ exports.newsletterSubscriptionEmail = () => {
     };
 
     return message;
-};
+}
 
-exports.contactEmail = () => {
+export function contactEmail() {
     const message = {
         subject: 'Contact Us',
         text: `We received your message! Our team will contact you soon. \n\n`
     };
 
     return message;
-};
+}
 
-exports.merchantApplicationEmail = () => {
+export function merchantApplicationEmail() {
     const message = {
         subject: 'Sell on MERN Store',
         text: `We received your request! Our team will contact you soon. \n\n`
     };
 
     return message;
-};
+}
 
-exports.merchantDeactivateAccount = () => {
+export function merchantDeactivateAccount() {
     const message = {
         subject: 'Merchant account on MERN Store',
         text:
@@ -93,9 +93,9 @@ exports.merchantDeactivateAccount = () => {
     };
 
     return message;
-};
+}
 
-exports.orderConfirmationEmail = order => {
+export function orderConfirmationEmail(order) {
     const message = {
         subject: `Order Confirmation ${order._id}`,
         text:
@@ -104,4 +104,4 @@ exports.orderConfirmationEmail = order => {
     };
 
     return message;
-};
+}

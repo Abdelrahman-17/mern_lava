@@ -4,7 +4,7 @@ import styles from "./Home.module.css"
 import { AiFillDollarCircle } from "react-icons/ai";
 import { BsCart4 } from "react-icons/bs";
 import { FaCartArrowDown } from "react-icons/fa";
-import { productdata } from "../../../redux/slice/productslice"
+// import { productdata } from "../../../redux/slice/productslice"
 import { bookingshistory, earning, calcearning } from "../../../redux/slice/bookingslice"
 import { useSelector, useDispatch } from "react-redux";
 import ChartsBooking from "../chart/ChartsBooking"

@@ -15,8 +15,8 @@ export const SocketProvider = ({ children }) => {
 
     useEffect(() => {
         if (currentUser) {
-            // const socket = io("http://localhost:5000", {
-            const socket = io("https://mern-lava.onrender.com", {
+            const socket = io("http://localhost:5000", {
+                // const socket = io("https://mern-lava.onrender.com/", {
                 query: {
                     userId: currentUser._id,
                 },

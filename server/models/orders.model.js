@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+import mongoose from "mongoose";
+
 const OrdersSchema = new mongoose.Schema({
     orderamount: {
         type: Number,
@@ -19,4 +20,4 @@ const OrdersSchema = new mongoose.Schema({
 });
 
 const Orders = mongoose.model('orders', OrdersSchema);
-module.exports = Orders
+export default Orders

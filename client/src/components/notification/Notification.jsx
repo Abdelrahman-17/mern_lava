@@ -1,19 +1,36 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import './Notification.css'
 import { AuthContext } from '../../context/AuthContext'
-import { notificationshistory } from '../../redux/slice/notificationslice'
-import { useSelector } from 'react-redux'
+import { getNotification } from '../../redux/slice/notificationslice'
+import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
+import axios from 'axios'
 
 const Notification = () => {
-    const Notification = useSelector(notificationshistory)
+    const [notification, setNotification] = useState([])
     const { currentUser } = useContext(AuthContext)
-    const sortedNotification = [...Notification].sort((a, b) => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        const getnotifications = async () => {
+            await axios.get(`${process.env.BASE_API_URL_HOST}/notification/notificationData/${currentUser?._id}`)
+                .then(res => {
+                    setNotification(res.data)
+                })
+                .catch(err => console.log(err))
+        }
+        getnotifications();
+    }, [])
+
+
+    const sortedNotification = [...notification].sort((a, b) => {
         return a.date.localeCompare(b.date);
     });
-    const deleteNotification = async (NotificationId) => {
-        await axios.post(`${process.env.BASE_API_URL_HOST}/notification/clear-notification`, { NotificationId })
+    const deleteNotification = async (notificationId) => {
+        await axios.post(`${process.env.BASE_API_URL_HOST}/notification/clear-notification`, { notificationId })
             .then(
                 res => {
                     toast.success(res.data)
+                    dispatch(getNotification())
                 })
             .catch(err => {
                 toast.error(err.data)
@@ -25,7 +42,8 @@ const Notification = () => {
         const day = hour * 24;
         if (timestamp < minute) {
             return "now";
-        } else if (timestamp < hour) {
+        }
+        else if (timestamp < hour) {
             const minutes = Math.floor(timestamp / minute);
             return `${minutes}m`;
         } else if (timestamp < day) {
@@ -33,9 +51,9 @@ const Notification = () => {
             return `${hours}h`;
         }
         else if (timestamp >= day) {
-            sortedNotification.map((Notification) => {
-                if ((Date.now() - Notification.date.toDate()) >= day) {
-                    deleteNotification(Notification._id)
+            sortedNotification.map((notification) => {
+                if ((Date.now() - notification.date) >= day) {
+                    deleteNotification(notification.uid)
                 }
             })
         }
@@ -53,7 +71,7 @@ const Notification = () => {
                             <p>
                                 {
                                     notification.date &&
-                                    formatRelativeTime(Date.now() - notification.date.toDate())
+                                    formatRelativeTime(Date.now() - notification.date)
                                 }
                             </p>
                         </div>

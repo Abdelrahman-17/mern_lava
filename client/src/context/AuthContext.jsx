@@ -5,14 +5,14 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const cookies = new Cookies();
     const [currentUser, setCurrentUser] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [admin, setAdmin] = useState(false);
     // const [token, setToken] = useState(localStorage.token)
     const token = cookies.get("TOKEN");
     // axios.defaults.withCredentials = true
     useEffect(() => {
         if (token) {
-            setLoading(true)
+            // setLoading(true)
             axios.post(`${process.env.BASE_API_URL_HOST}/auth/userData`, { token })
                 .then((res) => {
                     // console.log("userData", res);
@@ -35,6 +35,7 @@ export const AuthProvider = ({ children }) => {
         }
         else {
             setCurrentUser(null)
+            setLoading(false)
         }
     }, [token]);
     return (

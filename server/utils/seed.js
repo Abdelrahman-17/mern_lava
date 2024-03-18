@@ -1,9 +1,9 @@
-const chalk = require('chalk');
-const bcrypt = require('bcryptjs');
+import { blue, green, red } from 'chalk';
+import { genSalt, hash as _hash } from 'bcryptjs';
 
-const setupDB = require('./db');
-const { ROLES } = require('../constants');
-const User = require('../models/user');
+import setupDB from './db';
+import { ROLES } from '../constants';
+import User, { findOne } from '../models/user';
 
 const args = process.argv.slice(2);
 const email = args[0];
@@ -11,7 +11,7 @@ const password = args[1];
 
 const seedDB = async () => {
     try {
-        console.log(`${chalk.blue('✓')} ${chalk.blue('seed db started')}`);
+        console.log(`${blue('✓')} ${blue('seed db started')}`);
 
         if (!email || !password) throw new Error('missing arguments');
 
@@ -23,20 +23,20 @@ const seedDB = async () => {
             role: ROLES.Admin
         });
 
-        const existingUser = await User.findOne({ email: user.email });
+        const existingUser = await findOne({ email: user.email });
         console.log('existingUser', existingUser);
         if (existingUser) throw new Error('user collection is seeded!');
 
-        const salt = await bcrypt.genSalt(10);
-        const hash = await bcrypt.hash(user.password, salt);
+        const salt = await genSalt(10);
+        const hash = await _hash(user.password, salt);
         user.password = hash;
 
         await user.save();
 
-        console.log(`${chalk.green('✓')} ${chalk.green('seed db finished')}`);
+        console.log(`${green('✓')} ${green('seed db finished')}`);
     } catch (error) {
         console.log(
-            `${chalk.red('x')} ${chalk.red('error while seeding database')}`
+            `${red('x')} ${red('error while seeding database')}`
         );
         console.log(error);
         return null;

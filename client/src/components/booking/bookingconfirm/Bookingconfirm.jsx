@@ -25,8 +25,9 @@ const Bookingconfirm = () => {
     }, [booking])
     const payment = async (e) => {
         e.preventDefault();
+        const serverTimestamp = new Date().toISOString();
         await axios.post(`${process.env.BASE_API_URL_HOST}/booking/booking`, {
-            bookingamount: totprice, bookingdate: dateTime, uid: uid, bookingitem: booking
+            bookingamount: totprice, bookingdate: serverTimestamp, uid: uid, bookingitem: booking
         })
             .then(res => console.log(res))
             .catch(err => console.log(err))
@@ -35,8 +36,9 @@ const Bookingconfirm = () => {
         toast.success("Payment successful", {
             position: "top-right",
         });
-        await axios.post(`${process.env.BASE_API_URL_HOST}/notification/add_notification`,
-            { date: dateTime, price: totprice, title: 'booking', description: 'booking' })
+        const time = Date.now
+        await axios.post(`${process.env.BASE_API_URL_HOST}/notification/add-notification`,
+            { uid: currentUser?._id, date: time, price: totprice, title: 'booking', description: 'booking' })
             .then(res => console.log(res))
             .catch(err => console.log(err))
         dispatch(getNotification());

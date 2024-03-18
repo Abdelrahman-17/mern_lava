@@ -3,7 +3,10 @@ import Notification from '../../components/notification/Notification'
 
 const Notificationpage = memo(() => {
     return (
-        <Notification />
+        <>
+            kk
+            {/* <Notification /> */}
+        </>
     )
 })
 

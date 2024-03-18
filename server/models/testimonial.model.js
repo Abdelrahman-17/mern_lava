@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from "mongoose";
 const TestimonialsScehma = new mongoose.Schema(
     {
         firstname: {
@@ -31,4 +31,4 @@ const TestimonialsScehma = new mongoose.Schema(
 );
 
 const Testimonial = mongoose.model("testimonials", TestimonialsScehma);
-module.exports = Testimonial
+export default Testimonial

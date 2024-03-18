@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     app: {
         name: 'Mern-Lava',
         apiURL: process.env.BASE_API_URL,
@@ -6,7 +6,7 @@ module.exports = {
         // dd: window.location.host.includes('localhost') ? process.env.REACT_CLIENT_URL : process.env.FLUTTER_CLIENT_URL
         // appname: [window.location.hostname]
     },
-    port: process.env.PORT || 5000,
+    port: process.env.PORT,
     database: {
         url: process.env.MONGO_URI
     },
@@ -18,7 +18,8 @@ module.exports = {
         key: process.env.MAILCHIMP_KEY,
         listKey: process.env.MAILCHIMP_LIST_KEY
     }
-    , vonage: {
+    ,
+    vonage: {
         Key: process.env.VONAGE_APPLICATION_API_KEY,
         apisecret: process.env.VONAGE_APPLICATION_API_SECRET,
         sender: process.env.VONAGE_APPLICATION_SENDER

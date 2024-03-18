@@ -1,8 +1,8 @@
-const express = require("express");
-const jwt = require("jsonwebtoken");
+import express from "express";
+import jwt from "jsonwebtoken";
 const router = express.Router();
-const passport = require('passport');
-const keys = require("../config/keys.js");
+import keys from "../config/keys.js";
+import passport from "passport";
 const { clientURL } = keys.app
 const { secret, tokenLife } = keys.jwt;
 // const app = express()
@@ -103,4 +103,4 @@ router.get(
         // res.redirect(`${clientURL}/auth/success?token=${jwtToken}`);
     }
 );
-module.exports = router
+export default router

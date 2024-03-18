@@ -1,6 +1,6 @@
-const Booking = require('../models/booking.model')
+import Booking from '../models/booking.model.js';
 // const User = require('../models/user.model')
-const booking = async (req, res) => {
+export const booking = async (req, res) => {
     const { bookingamount, bookingdate, uid, bookingitem } = req.body;
     try {
         await Booking.create({
@@ -15,7 +15,8 @@ const booking = async (req, res) => {
         res.send({ status: "Error Payment" });
     }
 }
-const bookingData = async (req, res) => {
+
+export const bookingData = async (req, res) => {
     try {
         const booking = await Booking.find();
         res.status(200).json(booking);
@@ -23,4 +24,12 @@ const bookingData = async (req, res) => {
         res.status(500).json({ message: 'Failed to retrieve booking' });
     }
 }
-module.exports = { booking, bookingData }
+export const bookingData_ID = async (req, res) => {
+    try {
+        const { id } = req.params
+        const booking = await Booking.find({ uid: id });
+        res.json(booking);
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to retrieve booking' });
+    }
+}

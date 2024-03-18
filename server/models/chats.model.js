@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+import mongoose from "mongoose";
+
 const ChatsSchema = new mongoose.Schema({
     senderId: {
         type: String,
@@ -17,10 +18,10 @@ const ChatsSchema = new mongoose.Schema({
     //     required: true,
     // },
     timestamp: {
-        type: String,
-        // required: true
+        type: Date,
+        required: true
     }
 });
 
-const Chats = mongoose.model('chats', ChatsSchema);
-module.exports = Chats
+const Chats = mongoose.model('chat', ChatsSchema);
+export default Chats

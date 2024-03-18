@@ -39,30 +39,28 @@ const Profilenav = ({ setActiveside }) => {
     // const auth = getAuth();
     // const user = auth.currentUser;
     const logouthandler = async () => {
-        setLoading(true)
-        try {
-            await cookies.remove("TOKEN");
-            toast.success("logout succeessful...")
-            setLoading(false)
-            window.location.href = "./login";
-            // navigate('/login')
-        }
-        catch (error) {
-            toast.error(error.message)
-            setLoading(false)
-        };
+        // setLoading(true)
+        // try {
+        cookies.remove("TOKEN");
+        toast.success("logout succeessful...")
+        // setLoading(false)
+        window.location.href = "../login";
+        // navigate('/login')
+        // }
+        // catch (error) {
+        // toast.error(error.message)
+        // setLoading(false)
+        // };
     }
     const deleteaccount = async () => {
         setLoading(true)
         await axios.post(`${process.env.BASE_API_URL_HOST}/auth/deleteUser`, { userid: currentUser?.uid })
             .then((res) => {
-                console.log(res);
-                toast.success("logout succeessful...")
+                toast.success("Delete Account Succeessfully")
                 setLoading(false)
             })
             .catch(err => {
-                console.log(err);
-                toast.error(err.message)
+                toast.error(err)
                 setLoading(false)
             })
     }
@@ -91,6 +89,11 @@ const Profilenav = ({ setActiveside }) => {
                             <li>
                                 <NavLink className={activelink} to='/profile/orders'>
                                     My Orders
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink className={activelink} to='/profile/booking'>
+                                    My Booking
                                 </NavLink>
                             </li>
                             <li>

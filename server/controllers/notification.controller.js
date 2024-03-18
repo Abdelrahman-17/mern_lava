@@ -1,17 +1,20 @@
-const Notification = require("../models/notification.model");
-const notificationData = async (req, res) => {
+import Notification from "../models/notification.model.js";
+export const notificationData = async (req, res) => {
     const { id } = req.params;
     try {
-        const allNotification = await Notification.find({ _id: id })
+        const allNotification = await Notification.find({ uid: id })
+        // const allNotification = await Notification.find({})
+
         res.status(201).json(allNotification);
     } catch (error) {
         res.status(500).json({ message: 'Failed to retrieve Notification' });
     }
 }
-const add_notification = async (req, res) => {
-    const { title, description, price, date } = req.body;
+export const add_notification = async (req, res) => {
+    const { uid, title, description, price, date } = req.body;
     try {
         await Notification.create({
+            uid,
             title,
             description,
             price,
@@ -23,13 +26,12 @@ const add_notification = async (req, res) => {
         res.send({ status: "Error Notification" });
     }
 }
-const clear_notification = async (req, res) => {
-    const { NotificationId } = req.body;
+export const clear_notification = async (req, res) => {
+    const { notificationId } = req.body;
     try {
-        await Notification.deleteMany({ id: NotificationId });
+        await Notification.deleteMany({ uid: notificationId });
         res.status(201).json({ message: 'Notification deleted successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Failed to delete Notification' });
     }
 }
-module.exports = { notificationData, clear_notification, add_notification }

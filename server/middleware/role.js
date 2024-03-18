@@ -14,4 +14,4 @@ const check =
         };
 
 const role = { check };
-module.exports = role;
+export default role;
