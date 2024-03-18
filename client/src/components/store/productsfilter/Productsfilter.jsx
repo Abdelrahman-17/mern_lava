@@ -4,26 +4,18 @@ import Productsitem from '../productsitem/Productsitem'
 import { MdPhotoCameraBack } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
 import { filterByCategory, filterBySearch, filterproduct } from '../../../redux/slice/filterslice'
-import { carsdata } from '../../../redux/slice/carsslice'
-import { accessoriesdata } from '../../../redux/slice/accessoriesslice'
+import { carsdata, getCars } from '../../../redux/slice/carsslice'
+import { accessoriesdata, getAccessories } from '../../../redux/slice/accessoriesslice'
 function Productsfilter() {
     const [category, setCategory] = useState('Cars')
-    const Cars = useSelector(carsdata)
-    const Accessories = useSelector(accessoriesdata)
-    const [selectproducts, setSelectproducts] = useState([])
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        if (category === "Cars") {
-            setSelectproducts(Cars)
-        }
-        else {
-            setSelectproducts(Accessories)
-        }
-    }, [selectproducts])
     const [inputsearch, setInputsearch] = useState("")
     const [type, setType] = useState([])
     // const selectproducts = useSelector(productdata)
+    const Cars = useSelector(carsdata)
+    const Accessories = useSelector(accessoriesdata)
+    const [selectproducts, setSelectproducts] = useState([])
     const filteredproduct = useSelector(filterproduct)
     const currentproduct = filteredproduct.length === 0 ? selectproducts : filteredproduct;
     useEffect(() => {
@@ -37,6 +29,15 @@ function Productsfilter() {
     //     ...new Set(selectproducts.map((product) => product.category)),
     // ];
 
+    useEffect(() => {
+        if (category === "Cars") {
+            setSelectproducts(Cars)
+        }
+        else {
+            setSelectproducts(Accessories)
+        }
+    }, [category])
+    // console.log(selectproducts);
     return (
         <>
             <div className="select-category flex justify-evenly w-1/2 p-5 mx-auto">
