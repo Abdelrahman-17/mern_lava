@@ -28,7 +28,10 @@ function Productsfilter() {
     //     "All",
     //     ...new Set(selectproducts.map((product) => product.category)),
     // ];
-
+    useEffect(() => {
+        dispatch(getCars())
+        dispatch(getAccessories())
+    }, [dispatch])
     useEffect(() => {
         if (category === "Cars") {
             setSelectproducts(Cars)
