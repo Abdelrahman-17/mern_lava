@@ -12,9 +12,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Provider store={store}>
         <AuthProvider>
-          {/* <SocketProvider> */}
-          <App />
-          {/* </SocketProvider> */}
+          <SocketProvider>
+            <App />
+          </SocketProvider>
         </AuthProvider>
       </Provider>
     </BrowserRouter>
