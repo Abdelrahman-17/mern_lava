@@ -9,12 +9,14 @@ const NotFound = () => {
         <>
             <div className="notfound">
                 <div className="images">
-                    <img src={four} alt="" />
+                    <p></p>
+                    {/* <img src={four} alt="" /> */}
                     <img src={wheel} alt="" />
-                    <img src={four} alt="" />
+                    {/* <img src={four} alt="" /> */}
+                    <p></p>
                 </div>
                 <h2>page not found</h2>
-                <button onClick={() => navigate('/')}>back to home</button>
+                <Link to={'/'}>back to home</Link>
             </div>
         </>
     )

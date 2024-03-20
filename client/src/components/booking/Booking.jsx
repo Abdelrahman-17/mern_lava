@@ -11,6 +11,8 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { addtocart } from '../../redux/slice/cartslice'
 import axios from 'axios'
 import { servicesdata } from '../../redux/slice/serviceslice'
+import HeroCard from '../slider/HeroCard'
+
 const Booking = () => {
     const [location, setLocation] = useState(false)
     const [active, setActive] = useState(true)
@@ -35,6 +37,8 @@ const Booking = () => {
     return (
         <>
             {/* {location && */}
+            <HeroCard page={'Online Booking'} />
+
             <section className="our-services-booking">
                 <h3>our services</h3>
                 <h2>our comprehensive services</h2>

@@ -11,8 +11,12 @@ import Productdetails from './components/store/productsdetail/Productdetails'
 import OrdersPage from './pages/orderspage/OrdersPage'
 import CartPage from './pages/cartpage/CartPage'
 import CheckoutPage from './pages/checkoutpage/CheckoutPage'
-import AboutPage from './pages/aboutpage/AboutPage'
-import TeamPage from './pages/teampage/TeamPage'
+import About from './components/home/homeitems/about/About';
+import Team from './components/team/Team';
+import Contact from './components/Contact/Contact';
+import Services from './components/services/Services';
+import Faq from './components/faq/Faq';
+import News from './components/news/News';
 import ProfilePage from './pages/profilepage/ProfilePage'
 import ChatPage from './pages/chatpage/ChatPage'
 import SecurityPage from './pages/securitypage/SecurityPage'
@@ -24,7 +28,6 @@ import Orderdetails from './components/orders/Orderdetails'
 import NotFound from './pages/NotFound/NotFound'
 import Bookingdetails from './components/booking/bookingdetails/Bookingdetails'
 import Bookingconfirm from './components/booking/bookingconfirm/Bookingconfirm'
-import ContactPage from './pages/Contactpage/ContactPage'
 import { AuthContext } from './context/AuthContext'
 import { useDispatch } from 'react-redux'
 import { getorders } from './redux/slice/orderslice'
@@ -37,6 +40,7 @@ import Forgetpassword from './components/auth/Forgetpassword'
 import Otp from './components/auth/Otp'
 import { getCars } from './redux/slice/carsslice';
 import { getAccessories } from './redux/slice/accessoriesslice';
+
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -89,9 +93,14 @@ const App = () => {
             <Route path='/checkout' element={currentUser ? <CheckoutPage /> : <LoginPage />} />
             <Route path='/chat' element={currentUser ? <ChatPage /> : <LoginPage />} />
             <Route path='/security' element={currentUser ? <SecurityPage /> : <LoginPage />} />
-            <Route path='/about' element={currentUser ? <AboutPage /> : <LoginPage />} />
-            <Route path='/team' element={currentUser ? <TeamPage /> : <LoginPage />} />
-            <Route path='/contact' element={currentUser ? <ContactPage /> : <LoginPage />} />
+            <Route path='/about' element={currentUser ? <About /> : <LoginPage />} />
+            <Route path='/team' element={currentUser ? <Team /> : <LoginPage />} />
+            <Route path='/contact' element={currentUser ? <Contact /> : <LoginPage />} />
+            <Route path='/services' element={currentUser ? <Services /> : <LoginPage />} />
+            <Route path='/faq' element={currentUser ? <Faq /> : <LoginPage />} />
+            <Route path='/news' element={currentUser ? <News /> : <LoginPage />} />
+            <Route path='/404' element={< NotFound />} />
+
             {/* <Route path='/notification' element={currentUser ? <NotificationPage /> : <LoginPage />} /> */}
             {
               currentUser?.email === "admin@gmail.com" &&
@@ -102,7 +111,7 @@ const App = () => {
             <Route path='otp' element={<Otp />} />
             <Route path='/*' element={< NotFound />} />
           </Routes>
-          <Footer />
+          {/* <Footer /> */}
         </>
       }
     </>

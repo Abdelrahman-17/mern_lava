@@ -11,6 +11,7 @@ import { MdEmail } from 'react-icons/md'
 import TrackVisibility from 'react-on-screen';
 import axios from 'axios';
 import { toast } from 'react-toastify'
+import HeroCard from '../slider/HeroCard'
 const Contact = () => {
     const { currentUser } = useContext(AuthContext)
     const [firstname, setFirstname] = useState('false')
@@ -41,7 +42,9 @@ const Contact = () => {
     }
     return (
         <>
-            <Herocontact />
+            <HeroCard page={'Contact'} />
+
+            {/* <Herocontact /> */}
             {/* <section className="contact">
                 <div className="left">
                     <h1>get in touch</h1>

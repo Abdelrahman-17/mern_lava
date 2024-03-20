@@ -124,7 +124,7 @@ header .header-top-social a:hover {
 .main-navigation {
     position: absolute;
     position: relative;
-    width: 100%;
+    width: 100% !important;
     display: grid;
     /* grid-template-columns: 1fr 5fr; */
     /* padding: 18px 10rem; */
@@ -159,8 +159,9 @@ header .header-top-social a:hover {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
+    /* right: 0; */
     z-index: 33333;
+    width: 100%;
 }
 
 .main-navigation .logo {
@@ -473,7 +474,9 @@ header .header-top-social a:hover {
     }
 
     .main-navigation {
-        justify-content: space-between;
+        /* display: grid; */
+        /* grid-template-columns: 2fr 1fr; */
+        /* justify-content: space-between; */
         padding: 5px 10px;
     }
 

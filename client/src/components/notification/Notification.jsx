@@ -61,10 +61,10 @@ const Notification = () => {
     };
     return (
         <>
-            <div>
+            <section className='notification'>
                 {sortedNotification.map((notification) => {
                     return (
-                        <div key={notification?._id}>
+                        <div className='card' key={notification?._id}>
                             <p>{notification?.title}</p>
                             <p>{notification?.description}</p>
                             <p>{notification?.price}</p>
@@ -77,7 +77,7 @@ const Notification = () => {
                         </div>
                     );
                 })}
-            </div>
+            </section>
         </>
     )
 }

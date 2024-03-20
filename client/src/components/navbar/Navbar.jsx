@@ -60,18 +60,16 @@ const Navbar = () => {
     const headerref = useRef()
     const [active, setActive] = useState(false)
     const [activeheader, setActiveheader] = useState(false)
-    window.onscroll = () => {
-        // let aboutcontaintop = headerref.current.offsetTop;
-        // let aboutheight = headerref.current.offsetHeight;
-        // let screenheight = window.innerHeight;
-        let scrollaction = window.pageYOffset;
-        if (scrollaction > 50) {
-            setActiveheader(true)
-        } else {
-            setActiveheader(false)
-        }
+    const handleScroll = () => {
+        const scroll = window.pageYOffset;
+        const shouldBeVisible = scroll > 50;
+        setActiveheader(shouldBeVisible);
+    };
 
-    }
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
     return (
         <>
             {/* <ToastContainer /> */}
@@ -97,9 +95,10 @@ const Navbar = () => {
                                                     <img className='translate-y-1' src={mail} alt />
                                                 </div>
                                                 <div class="header-top-contact-info">
-                                                    <Link to="/cdn-cgi/l/email-protection#4f262129200f2a372e223f232a612c2022"><span
+                                                    {/* <Link to="/cdn-cgi/l/email-protection#4f262129200f2a372e223f232a612c2022"><span
                                                         class="__cf_email__"
-                                                        data-cfemail="90f9fef6ffd0f5e8f1fde0fcf5bef3fffd">[email&#160;protected]</span></Link>
+                                                        data-cfemail="90f9fef6ffd0f5e8f1fde0fcf5bef3fffd">[email&#160;protected]</span></Link> */}
+                                                    <Link to="mailto:info@example.com">info@example.com</Link>
                                                 </div>
                                             </li>
                                             <li>
@@ -164,13 +163,13 @@ const Navbar = () => {
                                                 </span>
                                             </button>
                                             <div className={`${active ? 'dropdown-menu active' : 'dropdown-menu'}`}>
-                                                <NavLink className={activelink} to="/About">about</NavLink>
-                                                <NavLink className={activelink} to="/Services">services</NavLink>
-                                                <NavLink className={activelink} to="/News">news</NavLink>
-                                                <NavLink className={activelink} to="/Team">team</NavLink>
-                                                <NavLink className={activelink} to="/Faq">FAQ</NavLink>
+                                                <NavLink className={activelink} to="/sbout">about</NavLink>
+                                                <NavLink className={activelink} to="/services">services</NavLink>
+                                                <NavLink className={activelink} to="/news">news</NavLink>
+                                                <NavLink className={activelink} to="/team">team</NavLink>
+                                                <NavLink className={activelink} to="/faq">FAQ</NavLink>
                                                 <NavLink className={activelink} to="/404">404</NavLink>
-                                                <NavLink className={activelink} to="/Contact">contact</NavLink>
+                                                <NavLink className={activelink} to="/contact">contact</NavLink>
                                             </div>
                                         </div>
 
