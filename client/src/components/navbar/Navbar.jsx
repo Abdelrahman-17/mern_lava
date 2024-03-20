@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import './Navbar.css'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import Logo from "../../assets/img/logo/03.png"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,6 +14,7 @@ import Cookies from "universal-cookie";
 import livechat from '../../assets/img/icon/live-chat.svg'
 import mail from '../../assets/img/icon/mail.svg'
 import clock from '../../assets/img/icon/clock.svg'
+import { FiMenu } from 'react-icons/fi';
 
 const Navbar = () => {
     const cookies = new Cookies();
@@ -31,32 +32,7 @@ const Navbar = () => {
     const showsidenav = () => {
         setSidenav(!sidenav);
     }
-    const logouthandler = () => {
-        setLoading(true)
-        try {
-            cookies.remove("TOKEN");
-            toast.success("logout succeessful...")
-            setLoading(false)
-            window.location.href = "../../login";
-            // navigate('/login')
-        }
-        catch (error) {
-            toast.error(error.message)
-            setLoading(false)
-        };
-    }
-    // useEffect(() => {
-    //     if (location.pathname === "/profile/chat") {
-    //         setActiveside(false)
-    //     }
-    // }, [location.pathname])
-    // $(window).scroll(function () {
-    //     if ($(this).scrollTop() > 50) {
-    //         $('.navbar').addClass("fixed-top");
-    //     } else {
-    //         $('.navbar').removeClass("fixed-top");
-    //     }
-    // });
+
     const headerref = useRef()
     const [active, setActive] = useState(false)
     const [activeheader, setActiveheader] = useState(false)
@@ -70,6 +46,13 @@ const Navbar = () => {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+    const { pathname } = useLocation();
+
+    // Automatically scrolls to top whenever pathname changes
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
     return (
         <>
             {/* <ToastContainer /> */}
@@ -123,7 +106,8 @@ const Navbar = () => {
                             </div>
                             <div ref={headerref} className={`${activeheader ? "main-navigation fixed-top" : "main-navigation"}`}>
                                 <img className='logo' src={Logo} alt="" />
-                                <button className="btn-h" onClick={showsidenav}>=</button>
+                                <FiMenu className='btn-h' onClick={showsidenav} />
+                                {/* <button className="btn-h" onClick={showsidenav}>=</button> */}
                                 <div className={`${sidenav ? "nav-menu active" : "nav-menu"}`}>
                                     <nav>
                                         <Adminlink>

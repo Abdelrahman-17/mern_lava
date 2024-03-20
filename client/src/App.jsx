@@ -111,7 +111,7 @@ const App = () => {
             <Route path='otp' element={<Otp />} />
             <Route path='/*' element={< NotFound />} />
           </Routes>
-          {/* <Footer /> */}
+          <Footer />
         </>
       }
     </>

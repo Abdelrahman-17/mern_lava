@@ -5,7 +5,6 @@ import { Col, Container, Row } from 'react-bootstrap'
 import './Contact.css'
 import 'animate.css';
 import contactImg from "../../assets/contact-img.svg";
-import Herocontact from './herocontact/Herocontact'
 import { FaPhone } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 import TrackVisibility from 'react-on-screen';

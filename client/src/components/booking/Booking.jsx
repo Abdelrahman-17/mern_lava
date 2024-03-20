@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './Booking.css'
 import Icon1 from '../../assets/Icon-3-Our-Service.png'
 import Icon2 from '../../assets/Our-Service-Icon.png'
@@ -16,6 +16,7 @@ import HeroCard from '../slider/HeroCard'
 const Booking = () => {
     const [location, setLocation] = useState(false)
     const [active, setActive] = useState(true)
+    const ourservicesref = useRef()
     // const [services, setServices] = useState([])
     const services = useSelector(servicesdata)
     const navigate = useNavigate()
@@ -29,23 +30,34 @@ const Booking = () => {
         // dispatch(addservicetobooking(ele))
         navigate(`/bookingdetails/${ele.id}`)
     }
-    // useEffect(() => {
-    //     if (!location) {
-    //         setLocation(prompt("Enter your location"))
+    // const handleScroll = () => {
+    //     let screenheight = window.innerHeight;
+    //     let scrollaction = window.pageYOffset;
+    //     let ourservicescontaintop = ourservicesref.current.offsetTop;
+    //     let ourservicesheight = ourservicesref.current.offsetHeight;
+    //     if (scrollaction > (ourservicescontaintop + (0.5 * ourservicesheight) - screenheight)) {
+    //         setActive(true)
+    //     } else {
+    //         setActive(false)
     //     }
-    // }, [location])
+    // };
+
+    // useEffect(() => {
+    //     window.addEventListener("scroll", handleScroll);
+    //     return () => window.removeEventListener("scroll", handleScroll);
+    // }, []);
+
     return (
         <>
             {/* {location && */}
             <HeroCard page={'Online Booking'} />
 
-            <section className="our-services-booking">
+            <section ref={ourservicesref} className="our-services-booking">
                 <h3>our services</h3>
                 <h2>our comprehensive services</h2>
                 <div className="container-cards" >
                     {
-                        services &&
-                        services.map((ele, index) => {
+                        services && services.map((ele, index) => {
                             return (
                                 <div className={`${active ? "card active" : "card"}`} key={index}>
                                     <img className="card-icon" src={ele.ImageUrl} alt="img" />

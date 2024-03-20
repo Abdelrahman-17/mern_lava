@@ -128,10 +128,10 @@ const Home = () => {
                     <button id="learn" class="btn btn-learn"> Learn More</button>
                 </div>
             </section>*/}
-            <About />
-            <OurServices />
+            {/* <About /> */}
+            {/* <OurServices /> */}
             {/* <Number /> */}
-            <Work />
+            {/* <Work /> */}
             {/* <Cta /> */}
             {/* <Hotdeal /> */}
             {/* <Fashiondigital /> */}
@@ -139,9 +139,9 @@ const Home = () => {
             {/* <About aboutref={aboutref} activeabout={activeabout} />
             <OurServices ourservicesref={ourservicesref} activeouerservices={activeouerservices} />
             <Pricing pricingref={pricingref} activepricing={activepricing} /> */}
-            <ChooseUs />
-            <Application />
-            <Testimonials />
+            {/* <ChooseUs /> */}
+            {/* <Application /> */}
+            {/* <Testimonials /> */}
 
         </>
     )

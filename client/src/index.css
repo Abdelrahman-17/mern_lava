@@ -64,6 +64,10 @@ li {
   list-style: none;
 }
 
+.container {
+  margin-top: 0;
+}
+
 .chats {
   background:
     /* linear-gradient(rgba(45, 183, 255, 0.5),

@@ -45,7 +45,7 @@
 .our-services-booking .container-cards {
     margin: 25px 0;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
@@ -55,7 +55,8 @@
     cursor: pointer;
 }
 
-.our-services-booking .container-cards .card:nth-child(1) {
+.our-services-booking .container-cards .card:nth-child(1),
+.our-services-booking .container-cards .card:nth-child(4) {
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
     position: relative;
@@ -66,7 +67,8 @@
     transition-delay: .3s;
 }
 
-.our-services-booking .container-cards .card:nth-child(4) {
+.our-services-booking .container-cards .card:nth-child(3),
+.our-services-booking .container-cards .card:nth-child(6) {
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
     position: relative;
@@ -78,27 +80,30 @@
 
 }
 
-.our-services-booking .container-cards .card:nth-child(1).active {
+.our-services-booking .container-cards .card:nth-child(1).active,
+.our-services-booking .container-cards .card:nth-child(4).active {
+
     visibility: visible;
     opacity: 1;
     left: 0;
 }
 
-.our-services-booking .container-cards .card:nth-child(4).active {
+.our-services-booking .container-cards .card:nth-child(3).active,
+.our-services-booking .container-cards .card:nth-child(6).active {
     visibility: visible;
     opacity: 1;
     right: 0;
 }
 
 .our-services-booking .container-cards .card:nth-child(2),
-.our-services-booking .container-cards .card:nth-child(3) {
+.our-services-booking .container-cards .card:nth-child(5) {
     /* visibility: hidden; */
     /* opacity: 0; */
     transition: .3s visibility, .3s opacity;
 }
 
 .our-services-booking .container-cards .card:nth-child(2).active,
-.our-services-booking .container-cards .card:nth-child(3).active {
+.our-services-booking .container-cards .card:nth-child(5).active {
     visibility: visible;
     opacity: 1;
 }

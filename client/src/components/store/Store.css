@@ -49,7 +49,8 @@
 .storing .filter .shop-widget {
     padding: 30px;
     border-radius: 10px;
-    background: #f2f5f8;
+    /* background: #f2f5f8; */
+    background: #d2d2d2;
     margin-bottom: 30px;
 }
 
@@ -67,6 +68,8 @@
     border-radius: 8px;
     font-size: 1.2rem;
     color: #000;
+    border: 2px solid rgb(112, 112, 112);
+    text-align: start;
 }
 
 .filter .shop-widget:nth-child(2) label,
@@ -107,7 +110,8 @@
     /* width: 250px; */
     height: 380px;
     /* height: fit-content; */
-    background-color: #f2f5f8;
+    /* background-color: #f2f5f8; */
+    background-color: #d2d2d2;
     border-radius: 18px;
     padding: 35px;
     /* padding: 10px; */

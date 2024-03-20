@@ -21,7 +21,8 @@ const OurServices = () => {
   const [active, setActive] = useState(true)
   const addservicebooking = (ele) => {
     // dispatch(addservicetobooking(ele))
-    navigate(`/bookingdetails/${ele.id}`)
+    // navigate(`/bookingdetails/${ele.id}`)
+    navigate('/booking')
   }
   // window.onscroll = () => {
   //   let ourservicescontaintop = ourservicesref.current.offsetTop;
