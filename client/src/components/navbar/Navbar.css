@@ -411,7 +411,7 @@ header .header-top-social a:hover {
     background-color: #263787;
     box-shadow: 0 0 10px rgb(0, 0, 0);
     position: absolute;
-    top: 65px;
+    top: 55px;
     right: -55px;
     display: grid;
     width: 200px;
@@ -424,6 +424,7 @@ header .header-top-social a:hover {
     opacity: 0;
     visibility: hidden;
     transition: .4s opacity, .4s visibility, .3s height;
+    /* overflow: auto; */
 }
 
 .main-navigation .dropdown .dropdown-menu a {
@@ -431,7 +432,7 @@ header .header-top-social a:hover {
     text-align: center;
     border-bottom: 1px solid #fff;
     font-size: 1.4rem;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-transform: capitalize;
 }
 
@@ -476,8 +477,8 @@ header .header-top-social a:hover {
     .main-navigation {
         /* display: grid; */
         /* grid-template-columns: 2fr 1fr; */
-        /* justify-content: space-between; */
-        padding: 5px 10px;
+        justify-content: space-between;
+        padding: 8px 25px;
     }
 
     .main-navigation .nav-menu {

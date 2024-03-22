@@ -40,6 +40,8 @@ import Forgetpassword from './components/auth/Forgetpassword'
 import Otp from './components/auth/Otp'
 import { getCars } from './redux/slice/carsslice';
 import { getAccessories } from './redux/slice/accessoriesslice';
+import Blog from './components/home/homeitems/blog/Blog';
+import Testimonials from './components/home/homeitems/testimonials/Testimonials';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -99,7 +101,10 @@ const App = () => {
             <Route path='/services' element={currentUser ? <Services /> : <LoginPage />} />
             <Route path='/faq' element={currentUser ? <Faq /> : <LoginPage />} />
             <Route path='/news' element={currentUser ? <News /> : <LoginPage />} />
+            <Route path='/blog' element={currentUser ? <Blog /> : <LoginPage />} />
+            <Route path='/testimonials' element={currentUser ? <Testimonials /> : <LoginPage />} />
             <Route path='/404' element={< NotFound />} />
+
 
             {/* <Route path='/notification' element={currentUser ? <NotificationPage /> : <LoginPage />} /> */}
             {

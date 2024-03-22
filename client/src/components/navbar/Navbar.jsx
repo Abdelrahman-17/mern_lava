@@ -148,6 +148,8 @@ const Navbar = () => {
                                             </button>
                                             <div className={`${active ? 'dropdown-menu active' : 'dropdown-menu'}`}>
                                                 <NavLink className={activelink} to="/sbout">about</NavLink>
+                                                {/* <NavLink className={activelink} to="/blog">blog</NavLink> */}
+                                                {/* <NavLink className={activelink} to="/testimonials">testimonials</NavLink> */}
                                                 <NavLink className={activelink} to="/services">services</NavLink>
                                                 <NavLink className={activelink} to="/news">news</NavLink>
                                                 <NavLink className={activelink} to="/team">team</NavLink>

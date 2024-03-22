@@ -15,6 +15,8 @@ import Work from './homeitems/work/Work'
 import Cta from './homeitems/cta/Cta'
 import Application from './homeitems/application/Application'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
+import Portfolio from './homeitems/portfolio/Portfolio'
+import Blog from './homeitems/blog/Blog'
 const Home = () => {
 
     // const aboutref = useRef()
@@ -59,7 +61,7 @@ const Home = () => {
             <div id="carouselExampleCap" data-bs-ride="carousel" className="carousel slide">
                 <div className="img-cards carousel-inner home">
                     <div className="carousel-item ng-star-inserted home-content active one">
-                        <div>
+                        <div className='containe'>
                             <h6 class="title"> Keep Your Car Clean</h6>
                             <h3 class="hero-title">
                                 We Provide Car <span>Washing</span> Services
@@ -73,7 +75,7 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="carousel-item ng-star-inserted home-content two">
-                        <div>
+                        <div className='containe'>
                             < h6 class="title"> Keep Your Car Clean</h6>
                             <h3 class="hero-title">
                                 We Provide Car <span>Washing</span> Services
@@ -87,7 +89,7 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="carousel-item ng-star-inserted home-content three">
-                        <div>
+                        <div className='containe'>
                             < h6 class="title"> Keep Your Car Clean</h6>
                             <h3 class="hero-title">
                                 We Provide Car <span>Washing</span> Services
@@ -114,34 +116,22 @@ const Home = () => {
                     <span className="hidden">Next</span>
                 </button>
             </div>
-            {/* <section className="home">
-                <div class="home-content">
-                    <h6 class="title"> Keep Your Car Clean</h6>
-                    <h3 class="hero-title">
-                        We Provide Car <span>Washing</span> Services
-                    </h3>
-                    <p class="home-desc">There are many variations of passages orem psum available but the majority have
-                        suffered alteration in some form by injected humour or randomised words which
-                        don't look even making it look like readable slightly believable.
-                    </p>
-                    <button id="start" class="btn btn-start">about Me !</button>
-                    <button id="learn" class="btn btn-learn"> Learn More</button>
-                </div>
-            </section>*/}
-            {/* <About /> */}
-            {/* <OurServices /> */}
-            {/* <Number /> */}
-            {/* <Work /> */}
+            <About />
+            <OurServices />
+            <Number />
+            <Portfolio />
+            <Work />
             {/* <Cta /> */}
             {/* <Hotdeal /> */}
             {/* <Fashiondigital /> */}
             {/* <Pricing /> */}
             {/* <About aboutref={aboutref} activeabout={activeabout} />
             <OurServices ourservicesref={ourservicesref} activeouerservices={activeouerservices} />
-            <Pricing pricingref={pricingref} activepricing={activepricing} /> */}
-            {/* <ChooseUs /> */}
-            {/* <Application /> */}
-            {/* <Testimonials /> */}
+        <Pricing pricingref={pricingref} activepricing={activepricing} /> */}
+            <ChooseUs />
+            <Application />
+            <Testimonials />
+            <Blog />
 
         </>
     )
