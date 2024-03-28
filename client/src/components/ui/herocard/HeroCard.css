@@ -3,7 +3,7 @@
             rgba(24, 56, 98, 1) 0%,
             rgba(24, 56, 98, 1) 2%,
             rgba(24, 56, 98, 0) 80%),
-        url(../../assets/img/01.jpg);
+        url(../../../assets/img/01.jpg);
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
