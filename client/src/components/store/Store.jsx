@@ -1,7 +1,7 @@
 import React from 'react'
 import Productsfilter from './productsfilter/Productsfilter'
 
-import HeroCard from '../slider/HeroCard'
+import HeroCard from '../ui/herocard/HeroCard'
 const Store = () => {
     return (
         // <div>Store</div>

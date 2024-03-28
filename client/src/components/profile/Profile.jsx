@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Profile.css'
 import Profilenav from './profilenav/Profilenav'
 import { Route, Routes } from 'react-router-dom'
@@ -7,11 +7,16 @@ import SecurityPage from '../../pages/securitypage/SecurityPage'
 import ChatPage from '../../pages/chatpage/ChatPage'
 import Notification from '../notification/Notification'
 import BookingOrdersPage from '../../pages/orderspage/BookingOrdersPage'
+import { FiMenu } from 'react-icons/fi'
+import { AuthContext } from '../../context/AuthContext'
 const Profile = () => {
     const [activeside, setActiveside] = useState(false)
+    const { currentUser } = useContext(AuthContext)
+
     return (
         <>
             {/* <div className='profile'> */}
+
             <div className={`${activeside ? 'active profile' : 'profile'}`} >
                 <div className='navbar'>
                     {/* <div className={`${activeside ? 'navabr hidden' : 'navbar'}`}> */}

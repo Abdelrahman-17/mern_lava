@@ -2,14 +2,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Home.css'
 import styles from './Slider.module.css'
-import Car_Hero from '../../assets/Car-Hero.png'
 import About from './homeitems/about/About'
 import OurServices from './homeitems/our-services/OurServices'
-import Pricing from './homeitems/pricing/Pricing'
 import ChooseUs from './homeitems/chooseus/ChooseUs'
 import Testimonials from './homeitems/testimonials/Testimonials'
-import Hotdeal from './homeitems/Hotdeal/Hotdeal'
-import Fashiondigital from './homeitems/Fashiondigital/Fashiondigital'
 import Number from './homeitems/numbers/Number'
 import Work from './homeitems/work/Work'
 import Cta from './homeitems/cta/Cta'
@@ -17,44 +13,9 @@ import Application from './homeitems/application/Application'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import Portfolio from './homeitems/portfolio/Portfolio'
 import Blog from './homeitems/blog/Blog'
+import Bestseller from './homeitems/bestseller/Bestseller'
 const Home = () => {
 
-    // const aboutref = useRef()
-    // const [activeabout, setActiveabout] = useState(false)
-
-    // const ourservicesref = useRef()
-    // const [activeouerservices, setActiveouerservices] = useState(false)
-
-    // const pricingref = useRef()
-    // const [activepricing, setActivepricing] = useState(false)
-
-    // window.onscroll = () => {
-    //     let aboutcontaintop = aboutref.current.offsetTop;
-    //     let aboutheight = aboutref.current.offsetHeight;
-    //     let screenheight = window.innerHeight;
-    //     let scrollaction = window.pageYOffset;
-    //     if (scrollaction > (aboutcontaintop + (0.5 * aboutheight) - screenheight)) {
-    //         setActiveabout(true)
-    //     } else {
-    //         setActiveabout(false)
-    //     }
-    //     ///////////////////////////////////////////
-    //     let ourservicescontaintop = ourservicesref.current.offsetTop;
-    //     let ourservicesheight = ourservicesref.current.offsetHeight;
-    //     if (scrollaction > (ourservicescontaintop + (0.5 * ourservicesheight) - screenheight)) {
-    //         setActiveouerservices(true)
-    //     } else {
-    //         setActiveouerservices(false)
-    //     }
-    //     ///////////////////////////////////////////
-    //     let pricingcontaintop = pricingref.current.offsetTop;
-    //     let pricingheight = pricingref.current.offsetHeight;
-    //     if (scrollaction > (pricingcontaintop + (0.5 * pricingheight) - screenheight)) {
-    //         setActivepricing(true)
-    //     } else {
-    //         setActivepricing(false)
-    //     }
-    // }  
     return (
         <>
 
@@ -118,16 +79,11 @@ const Home = () => {
             </div>
             <About />
             <OurServices />
+            <Bestseller />
             <Number />
             <Portfolio />
             <Work />
             {/* <Cta /> */}
-            {/* <Hotdeal /> */}
-            {/* <Fashiondigital /> */}
-            {/* <Pricing /> */}
-            {/* <About aboutref={aboutref} activeabout={activeabout} />
-            <OurServices ourservicesref={ourservicesref} activeouerservices={activeouerservices} />
-        <Pricing pricingref={pricingref} activepricing={activepricing} /> */}
             <ChooseUs />
             <Application />
             <Testimonials />

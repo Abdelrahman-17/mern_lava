@@ -111,7 +111,7 @@ const Navbar = () => {
                                 <div className={`${sidenav ? "nav-menu active" : "nav-menu"}`}>
                                     <nav>
                                         <Adminlink>
-                                            <NavLink className={activelink} to='/admin/home' >Admin</NavLink>
+                                            <NavLink className={activelink} to='/admin/dashboard' >Admin</NavLink>
                                         </Adminlink>
                                         <NavLink className={activelink} to="/">home</NavLink>
                                         <NavLink className={activelink} to="/booking">online booking</NavLink>
@@ -147,7 +147,7 @@ const Navbar = () => {
                                                 </span>
                                             </button>
                                             <div className={`${active ? 'dropdown-menu active' : 'dropdown-menu'}`}>
-                                                <NavLink className={activelink} to="/sbout">about</NavLink>
+                                                <NavLink className={activelink} to="/about">about</NavLink>
                                                 {/* <NavLink className={activelink} to="/blog">blog</NavLink> */}
                                                 {/* <NavLink className={activelink} to="/testimonials">testimonials</NavLink> */}
                                                 <NavLink className={activelink} to="/services">services</NavLink>

@@ -7,7 +7,6 @@ import { FcGoogle } from "react-icons/fc";
 import Logo from "../../assets/img/logo/03.png"
 import Loader from '../loader/Loader';
 import axios from 'axios';
-
 import Cookies from "universal-cookie";
 const Login = () => {
     const cookies = new Cookies();

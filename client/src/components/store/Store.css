@@ -63,7 +63,12 @@
     font-weight: 600;
 }
 
-.storing .filter .shop-widget input {
+.storing .filter .shop-widget .shop-widget-title.text {
+    color: #2e44a5;
+    font-weight: 400;
+}
+
+.storing .filter .shop-widget>input {
     padding: 10px 15px;
     border-radius: 8px;
     font-size: 1.2rem;
@@ -77,6 +82,52 @@
     font-size: 1.2rem;
     margin: 0 10px;
 }
+
+.storing .filter .shop-widget .brand select {
+    width: 100%;
+    padding: 3px;
+    font-size: 22px;
+    background-color: white;
+    color: black;
+
+}
+
+.storing .filter .shop-widget .price input {
+    padding: 5px;
+
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 5px;
+    background: #2db7ff;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #263787;
+    margin-top: -6px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #2db7ff;
+}
+
+
 
 .filter select,
 .filter label,
@@ -92,6 +143,17 @@
 
 .storing .aproducts {
     /* background-color: tan; */
+}
+
+.storing .filter .clearbtn {
+    padding: 10px 20px;
+    background-color: #263787;
+    color: white;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    /* width: 50%; */
+    margin: 0;
+    border-radius: 15px;
 }
 
 .products {

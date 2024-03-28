@@ -3,13 +3,17 @@ import axios from 'axios'
 import Productsitem from '../productsitem/Productsitem'
 import { MdPhotoCameraBack } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
-import { filterByCategory, filterBySearch, filterproduct } from '../../../redux/slice/filterslice'
-import { carsdata, getCars } from '../../../redux/slice/carsslice'
-import { accessoriesdata, getAccessories } from '../../../redux/slice/accessoriesslice'
+import { filerByPrice, filterByCategory, filterBySearch, filterproduct } from '../../../redux/slice/filterslice'
+import { carsdata, getCars, maxringe, minrange, pricecarrange } from '../../../redux/slice/carsslice'
+import { accessoriesdata, getAccessories, priceaccessoriesrange } from '../../../redux/slice/accessoriesslice'
 function Productsfilter() {
     const [category, setCategory] = useState('Cars')
     const dispatch = useDispatch();
+    // const combinedSettings = { ...defaults, ...userSettings };
 
+    const [price, setPrice] = useState(0)
+    const minRange = useSelector(minrange);
+    const maxRange = useSelector(maxringe);
     const [inputsearch, setInputsearch] = useState("")
     const [type, setType] = useState([])
     // const selectproducts = useSelector(productdata)
@@ -35,11 +39,22 @@ function Productsfilter() {
     useEffect(() => {
         if (category === "Cars") {
             setSelectproducts(Cars)
+            dispatch(pricecarrange())
         }
         else {
             setSelectproducts(Accessories)
+            dispatch(priceaccessoriesrange())
         }
     }, [category])
+
+    useEffect(() => {
+        dispatch(filerByPrice({ product: selectproducts, pricerange: price }));
+    }, [dispatch, price, selectproducts])
+    const resetFilter = () => {
+        setInputsearch('')
+        // setPrice(maxRange)
+        setPrice(maxRange / 2)
+    }
     // console.log(selectproducts);
     return (
         <>
@@ -55,6 +70,17 @@ function Productsfilter() {
                         <h3 className='shop-widget-title'>Search</h3>
                         <input type='text' className='searchinput' value={inputsearch} placeholder='search' onChange={(e) => setInputsearch(e.target.value)} />
                     </div>
+                    <div className="shop-widget">
+                        <h2 className='shop-widget-title'>Price</h2>
+                        <h3 className='shop-widget-title text'>{price}</h3>
+                        <div className="price">
+                            <input type="range" min={minRange} max={maxRange} value={price} onChange={(e) => setPrice(e.target.value)} />
+                        </div>
+                        <br />
+                    </div>
+                    <button className="clearbtn" onClick={resetFilter}>
+                        Clear filter
+                    </button>
                     {/* <div className="shop-widget">
                         <h3 className='shop-widget-title'>Category</h3>
                         <select aria-label="Default select example" className='form-select' onChange={(e) => {
@@ -90,7 +116,7 @@ function Productsfilter() {
                     <div className='mb-4'>
                         <p>Showing 1-20 of {selectproducts.length} Results</p>
                     </div>
-                    <Productsitem product={currentproduct} />
+                    <Productsitem product={currentproduct} category={category} />
                 </section>
             </section>
         </>

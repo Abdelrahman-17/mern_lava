@@ -2,7 +2,6 @@ import React from 'react'
 import './HeroCard.css'
 import { Link } from 'react-router-dom'
 const HeroCard = ({ page }) => {
-    console.log(page);
     return (
         <section className="hero">
             {/* <div className="overlay"> */}

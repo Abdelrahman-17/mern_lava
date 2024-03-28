@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import { addtocart } from '../../../redux/slice/cartslice';
 import { addtofavourit, favourititem } from '../../../redux/slice/favouritslice';
-function Productsitem({ product }) {
+function Productsitem({ product, category }) {
     // const [products, setProduct] = useState()
     // const [activebtn, setActivebtn] = useState(false)
     // const [pagination, setPagination] = useState(1)
@@ -47,7 +47,7 @@ function Productsitem({ product }) {
                                 <div className="add-to-cart">
                                     <i onClick={() => dispatch(addtocart(ele))}><FiShoppingCart /></i>
                                     <i onClick={() => dispatch(addtofavourit(ele))}><FiHeart /></i>
-                                    <i onClick={() => navigate(`/productdetails/${ele.id}`)}><FiSearch /></i>
+                                    <i onClick={() => navigate(`/productdetails/${ele.id}/${category}`)}><FiSearch /></i>
 
                                 </div>
                             </div>

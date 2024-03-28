@@ -423,7 +423,7 @@ header .header-top-social a:hover {
     z-index: 3333;
     opacity: 0;
     visibility: hidden;
-    transition: .4s opacity, .4s visibility, .3s height;
+    transition: .4s opacity, .4s visibility, .4s height;
     /* overflow: auto; */
 }
 

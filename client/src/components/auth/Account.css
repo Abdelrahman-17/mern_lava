@@ -5,7 +5,18 @@
     min-height: 100vh;
     position: relative;
     overflow: hidden;
+    /* background: linear-gradient(90deg,
+            rgba(237, 245, 249, .9) 0%,
+            rgba(237, 245, 249, .9) 2%,
+            rgba(237, 245, 249, .9) 100%),
+        url(../../assets/img/shape/03.png); */
     background-color: #cee7f4;
+    /* background: linear-gradient(90deg,
+            rgba(206, 231, 244, .9) 0%,
+            rgba(206, 231, 244, .9) 2%,
+            rgba(206, 231, 244, .9) 100%),
+        url(../../assets/img/shape/03.png); */
+
 }
 
 
@@ -25,6 +36,7 @@
     border-bottom: 4px solid #2db7ff;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
     overflow: hidden;
+
     /* backdrop-filter: blur(5px); */
 
 }
@@ -155,6 +167,7 @@ button.btn {
     font-size: .9em;
     /* color: white; */
     color: #162938;
+    /* color: #263787; */
     text-align: center;
     font-family: 500;
     margin: 25px 0 10px;
@@ -163,8 +176,10 @@ button.btn {
 .login-register p a {
     color: #162938;
     /* color: #477cff; */
+    color: #263787;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 1rem;
 
 }
 

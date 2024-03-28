@@ -10,7 +10,7 @@ import Foto6 from '../../../../assets/About-us-image3.png'
 
 const About = () => {
     const aboutref = useRef()
-    const [active, setActive] = useState(true)
+    const [active, setActive] = useState(false)
     // window.onscroll = () => {
     //     let aboutcontaintop = aboutref.current.offsetTop;
     //     let aboutheight = aboutref.current.offsetHeight;

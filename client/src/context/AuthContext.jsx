@@ -1,6 +1,8 @@
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import { useDispatch } from "react-redux";
+import { removeActiveUserHandler, setActiveUserHandler } from "../redux/slice/authslice";
 export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const cookies = new Cookies();
@@ -9,6 +11,7 @@ export const AuthProvider = ({ children }) => {
     const [admin, setAdmin] = useState(false);
     // const [token, setToken] = useState(localStorage.token)
     const token = cookies.get("TOKEN");
+    const dispatch = useDispatch()
     // axios.defaults.withCredentials = true
     useEffect(() => {
         if (token) {
@@ -25,15 +28,18 @@ export const AuthProvider = ({ children }) => {
                         // window.localStorage.clear();
                         // window.location.href = "./sign-in";
                         setCurrentUser(null)
+                        dispatch(removeActiveUserHandler())
                         setLoading(false)
                     }
                     else {
                         setCurrentUser(res.data.data);
+                        dispatch(setActiveUserHandler(res.data.data))
                         setLoading(false)
                     }
                 });
         }
         else {
+            dispatch(removeActiveUserHandler())
             setCurrentUser(null)
             setLoading(false)
         }

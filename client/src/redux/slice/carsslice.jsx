@@ -14,7 +14,7 @@ const carslice = createSlice({
     name: "cars",
     initialState,
     reducers: {
-        pricerange(state) {
+        pricecarrange(state) {
             const pricearray = [];
             state.carsdata.map((pro) => {
                 const price = pro.price;
@@ -53,7 +53,7 @@ const carslice = createSlice({
     }
 });
 export default carslice;
-export const { pricerange, shuffle } = carslice.actions
+export const { pricecarrange, shuffle } = carslice.actions
 export const carsdata = (state) => state.cars.carsdata;
 export const suffledata = (state) => state.cars.sufflecars;
 export const minrange = (state) => state.cars.minPrice;

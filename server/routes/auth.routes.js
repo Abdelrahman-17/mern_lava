@@ -1,5 +1,5 @@
 import express from "express";
-import { register, login, userData, forgot_password, reset_password_id_token_get, getAllUsers, deleteUser, upload_image, get_image, logout, getAllUsers_no_admin, getAdmin, update_user_data, verify, reset_password_id_token_post } from "../controllers/auth.controller.js";
+import { register, login, userData, forgot_password, getAllUsers, deleteUser, upload_image, get_image, logout, getAllUsers_no_admin, getAdmin, update_user_data, verify, reset_password_id_token_get, reset_password_id_token_post } from "../controllers/auth.controller.js";
 const router = express.Router();
 
 // router.get("*", async (req, res) => {

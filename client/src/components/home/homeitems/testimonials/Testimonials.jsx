@@ -9,7 +9,7 @@ import Image3 from '../../../../assets/Testi-Profile-2.png'
 import Image4 from '../../../../assets/Test-iProfile-1.png'
 import { FaStar } from "react-icons/fa";
 import { useLocation } from 'react-router-dom';
-import HeroCard from '../../../slider/HeroCard';
+import HeroCard from '../../../ui/herocard/HeroCard'
 import Work from '../work/Work';
 const Testimonials = () => {
     const options = {

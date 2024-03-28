@@ -35,9 +35,14 @@ const filterslice = createSlice({
                 // || product.category.toLowerCase().includes(search.toLowerCase())
             )
             state.filteredproduct = temp;
+        },
+        filerByPrice(state, action) {
+            const { product, pricerange } = action.payload;
+            let temp = product.filter((pro) => pro.price <= pricerange);
+            state.filteredproduct = temp;
         }
     }
 });
-export const { filterByCategory, filterBySearch } = filterslice.actions;
+export const { filterByCategory, filterBySearch, filerByPrice } = filterslice.actions;
 export const filterproduct = (state) => state.filter.filteredproduct;
 export default filterslice;

@@ -14,7 +14,7 @@ const accessorieslice = createSlice({
     name: "accessories",
     initialState,
     reducers: {
-        pricerange(state) {
+        priceaccessoriesrange(state) {
             const pricearray = [];
             state.accessoriesdata.map((pro) => {
                 const price = pro.price;
@@ -49,7 +49,7 @@ const accessorieslice = createSlice({
     }
 });
 export default accessorieslice;
-export const { pricerange, shuffle } = accessorieslice.actions
+export const { priceaccessoriesrange, shuffle } = accessorieslice.actions
 export const accessoriesdata = (state) => state.accessories.accessoriesdata;
 export const suffledata = (state) => state.accessories.suffleaccessories;
 export const minrange = (state) => state.accessories.minPrice;

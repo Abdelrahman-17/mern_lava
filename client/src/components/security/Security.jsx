@@ -47,8 +47,9 @@ const Security = () => {
         // update_user_data
         const email = currentUser?.email;
         const id = currentUser?._id;
+        // 65dcfa5efc8963c8e7121108 
         const token = cookies.get('TOKEN')
-        // await axios.post(`${process.env.BASE_API_URL_HOST}/auth/forgot-password`, { email })
+        // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTcxMDc4MzA2MywiZXhwIjoxNzEyMDc5MDYzfQ.9uMu2XLnC1dgoQXGy-a4YDmIuDllZPMzxfCCS0yp-U8        // await axios.post(`${process.env.BASE_API_URL_HOST}/auth/forgot-password`, { email })
         // await axios.post(`${process.env.BASE_API_URL_HOST}/auth/verify/${token}`)
         await axios.get(`${process.env.BASE_API_URL_HOST}/auth/reset-password/${id}/${token}`)
             .then((res) => {

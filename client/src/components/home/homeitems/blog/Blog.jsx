@@ -5,7 +5,7 @@ import Image1 from '../../../../assets/img/blog/01.jpg'
 import Image2 from '../../../../assets/img/blog/02.jpg'
 import Image3 from '../../../../assets/img/blog/03.jpg'
 import { useLocation } from 'react-router-dom'
-import HeroCard from '../../../slider/HeroCard'
+import HeroCard from '../../../ui/herocard/HeroCard'
 
 const Blog = memo(() => {
     const { pathname } = useLocation();

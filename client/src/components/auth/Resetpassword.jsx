@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import HeroCard from '../ui/herocard/HeroCard'
+
 const Resetpassword = () => {
 
     const { id, token } = useParams()

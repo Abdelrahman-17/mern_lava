@@ -9,7 +9,6 @@ import axios from 'axios';
 import { v4 as uuid } from "uuid"
 import Cookies from 'universal-cookie';
 import Logo from "../../assets/img/logo/03.png"
-
 const Signup = () => {
     const cookies = new Cookies();
     // const [firstname, setFirstname] = useState("");

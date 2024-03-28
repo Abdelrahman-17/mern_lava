@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/navbar/Navbar'
 import HomePage from './pages/homepage/HomePage'
@@ -11,7 +11,7 @@ import Productdetails from './components/store/productsdetail/Productdetails'
 import OrdersPage from './pages/orderspage/OrdersPage'
 import CartPage from './pages/cartpage/CartPage'
 import CheckoutPage from './pages/checkoutpage/CheckoutPage'
-import About from './components/home/homeitems/about/About';
+import About from './components/about/About';
 import Team from './components/team/Team';
 import Contact from './components/Contact/Contact';
 import Services from './components/services/Services';
@@ -54,7 +54,7 @@ const App = () => {
     dispatch(getNotification())
   }, [dispatch])
   const { currentUser, loading } = useContext(AuthContext);
-
+  const { pathname } = useLocation();
   // const [loading, setLoading] = useState(false)
   // useEffect(() => {
   //   if (currentUser?.email) {
@@ -78,13 +78,16 @@ const App = () => {
       {loading ? <Loader />
         : <>
           <ToastContainer />
+          {/* {pathname !== '/profile' && pathname !== '/profile/home' && pathname !== '/profile/orders' && pathname !== '/profile/booking' && pathname !== '/profile/notification' && pathname !== '/profile/chat' && */}
+          {/* {pathname !== '/admin' && pathname !== '/admin/all-users' && pathname !== '/admin/home-orders' && pathname !== '/admin/all-cars' && pathname !== '/admin/add-car/Add' && pathname !== '/admin/all-accessories' && pathname !== '/admin/add-accessory/Add' && pathname !== '/admin/home-booking' && pathname !== '/admin/all-services' && pathname !== '/admin/add-service/Add' && */}
           <Navbar />
+          {/* } */}
           <Routes>
             <Route path="/" element={currentUser ? <HomePage /> : <LoginPage />} />
             <Route path='/login' element={currentUser ? <HomePage /> : <LoginPage />} />
             <Route path='/signup' element={currentUser ? <HomePage /> : <SignupPage />} />
             <Route path="/store" element={currentUser ? <StorePage /> : <LoginPage />} />
-            <Route path='/productdetails/:id' element={currentUser ? <Productdetails /> : <LoginPage />} />
+            <Route path='/productdetails/:id/:category' element={currentUser ? <Productdetails /> : <LoginPage />} />
             <Route path='/orders' element={currentUser ? <OrdersPage /> : <LoginPage />} />
             <Route path='/orderdetails/:id' element={currentUser ? <Orderdetails /> : <LoginPage />} />
             <Route path='/cart' element={currentUser ? <CartPage /> : <LoginPage />} />
@@ -116,7 +119,10 @@ const App = () => {
             <Route path='otp' element={<Otp />} />
             <Route path='/*' element={< NotFound />} />
           </Routes>
+          {/* {pathname !== '/profile' && pathname !== '/profile/security' && pathname !== '/profile/orders' && pathname !== '/profile/booking' && pathname !== '/profile/notification' && pathname !== '/profile/chat' && */}
+          {/* {pathname !== '/admin' && pathname !== '/admin/all-users' && pathname !== '/admin/home-orders' && pathname !== '/admin/all-cars' && pathname !== '/admin/add-car/Add' && pathname !== '/admin/all-accessories' && pathname !== '/admin/add-accessory/Add' && pathname !== '/admin/home-booking' && pathname !== '/admin/all-services' && pathname !== '/admin/add-service/Add' && */}
           <Footer />
+          {/* } */}
         </>
       }
     </>

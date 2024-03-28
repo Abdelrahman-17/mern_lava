@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
 import axios from 'axios'
 import { toast } from 'react-toastify'
-
+import HeroCard from '../ui/herocard/HeroCard'
 const Forgetpassword = () => {
     // const { id, token } = useParams()
     // const { currentUser } = useContext(AuthContext)
@@ -21,6 +21,7 @@ const Forgetpassword = () => {
     }
     return (
         <>
+            <HeroCard />
             <div>
                 <p>Forgetpassword</p>
                 <input type="text" className='p-2 border-[3px] border-black rounded-2xl w-96' placeholder='Enter Your Email' onChange={(e) => setEmail(e.target.value)} value={email} />

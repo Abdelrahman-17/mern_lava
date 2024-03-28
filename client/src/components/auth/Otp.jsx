@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify';
+import HeroCard from '../ui/herocard/HeroCard'
 
 const Otp = () => {
     const [keyvalue, setKeyvalue] = useState('')

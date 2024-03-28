@@ -1,3 +1,52 @@
+/* .nav-top {
+    margin-left: 345px;
+    display: flex;
+    justify-content: space-between;
+    width: calc(100%-345px);
+    padding: 8px 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
+
+.nav-top.active {
+    margin-left: 50px;
+}
+
+.nav-top .pathname {
+    width: 400px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+
+.nav-top .pathname p {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.nav-top .logo {
+    width: 150px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.nav-top .logo img {
+    width: 60px;
+    height: 60px;
+
+}
+
+.nav-top .logo p {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    font-weight: 600;
+    margin-left: 8px;
+} */
+
 .admin {
     /* background-image: url(../../assets/About-Us-BG-1.png);
     background-position: top center;
@@ -17,15 +66,33 @@
 }
 
 .admin .navbar {
+    /* width: 345px; */
     /* width: 25%; */
     min-height: 80vh;
-    color: #06090d;
+    /*  color: #06090d;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #f6f6f6;
+    z-index: 33333;
+    height: 100%;
+    overflow: hidden;
+    transition: .4s width; */
 }
+
+/* .admin .navbar.active {
+    width: 50px;
+} */
 
 .admin .content {
     /* width: 75% !important; */
+    /* margin-left: 345px; */
     padding: 0 1rem;
 }
+
+/* .admin .content.active {
+    margin-left: 50px;
+} */
 
 @media screen and (max-width: 1400px) {
     .admin .content {

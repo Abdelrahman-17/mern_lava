@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import HeroCard from '../slider/HeroCard'
+import HeroCard from '../ui/herocard/HeroCard'
 
 const Faq = memo(() => {
     return (

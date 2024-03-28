@@ -1,9 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './Booking.css'
-import Icon1 from '../../assets/Icon-3-Our-Service.png'
-import Icon2 from '../../assets/Our-Service-Icon.png'
-import Icon3 from '../../assets/Our-Service-Icon2.png'
-import Icon4 from '../../assets/Our-Service-Icon4.png'
 import { ToastContainer, toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
 import data from '../../../public/data.json'
@@ -11,7 +7,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { addtocart } from '../../redux/slice/cartslice'
 import axios from 'axios'
 import { servicesdata } from '../../redux/slice/serviceslice'
-import HeroCard from '../slider/HeroCard'
+import HeroCard from '../ui/herocard/HeroCard'
 
 const Booking = () => {
     const [location, setLocation] = useState(false)
@@ -51,8 +47,8 @@ const Booking = () => {
         <>
             {/* {location && */}
             <HeroCard page={'Online Booking'} />
-
             <section ref={ourservicesref} className="our-services-booking">
+                {/* <section ref={ourservicesref} className="our-services-booking"> */}
                 <h3>our services</h3>
                 <h2>our comprehensive services</h2>
                 <div className="container-cards" >
