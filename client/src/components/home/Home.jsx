@@ -88,6 +88,7 @@ const Home = () => {
             <Application />
             <Testimonials />
             <Blog />
+            {/* <Recommendation /> */}
 
         </>
     )

@@ -68,7 +68,7 @@ const Orders = () => {
                                         <td>{ele.title}</td>
                                         <td>{ele.description}</td>
                                         <td>{+ele.price} EGB</td>
-                                        <td><img className="tdimg" src={ele.thumbnail} /></td>
+                                        <td><img className="tdimg" src={ele.ImageUrl} /></td>
                                         <td>{ele.itemquantity}</td>
                                         <td>{+ele.price * ele.itemquantity} EGB</td>
                                     </tr>

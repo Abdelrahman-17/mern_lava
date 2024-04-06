@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const uselogin = () => {
+const useLogin = () => {
     const cookies = new Cookies();
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -29,15 +29,13 @@ const uselogin = () => {
                 else {
                     toast.error("error")
                     setLoading(false)
-                    setEmail('')
-                    setPassword('')
+
                 }
             })
             .catch((err) => {
                 console.log(err)
                 setLoading(false)
-                setEmail('')
-                setPassword('')
+
 
             })
 
@@ -46,7 +44,7 @@ const uselogin = () => {
 
 }
 
-export default uselogin
+export default useLogin
 
 function handleInputErrors(email, password) {
     if (!email || !password) {

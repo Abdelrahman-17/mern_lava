@@ -9,7 +9,7 @@ import axios from 'axios';
 import { v4 as uuid } from "uuid"
 import Cookies from 'universal-cookie';
 import Logo from "../../assets/img/logo/03.png"
-const Signup = () => {
+const Register = () => {
     const cookies = new Cookies();
     // const [firstname, setFirstname] = useState("");
     // const [lastname, setLastname] = useState("");
@@ -218,7 +218,7 @@ const Signup = () => {
                                 </button>
                                 <div className="login-register">
                                     <p>Already have an acoount ?
-                                        <Link to="/Login" className="login-link"> Login</Link>
+                                        <Link to="/login" className="login-link"> Login</Link>
                                     </p>
                                 </div>
                             </form>
@@ -249,4 +249,4 @@ const Signup = () => {
     )
 }
 
-export default Signup
+export default Register

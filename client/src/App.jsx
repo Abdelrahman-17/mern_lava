@@ -5,7 +5,7 @@ import Navbar from './components/navbar/Navbar'
 import HomePage from './pages/homepage/HomePage'
 import Footer from './components/footer/Footer'
 import LoginPage from './pages/accountpage/LoginPage'
-import SignupPage from './pages/accountpage/SignupPage'
+import RegisterPage from './pages/accountpage/RegisterPage'
 import StorePage from './pages/storepage/StorePage'
 import Productdetails from './components/store/productsdetail/Productdetails'
 import OrdersPage from './pages/orderspage/OrdersPage'
@@ -85,7 +85,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={currentUser ? <HomePage /> : <LoginPage />} />
             <Route path='/login' element={currentUser ? <HomePage /> : <LoginPage />} />
-            <Route path='/signup' element={currentUser ? <HomePage /> : <SignupPage />} />
+            <Route path='/register' element={currentUser ? <HomePage /> : <RegisterPage />} />
             <Route path="/store" element={currentUser ? <StorePage /> : <LoginPage />} />
             <Route path='/productdetails/:id/:category' element={currentUser ? <Productdetails /> : <LoginPage />} />
             <Route path='/orders' element={currentUser ? <OrdersPage /> : <LoginPage />} />

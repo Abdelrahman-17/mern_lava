@@ -113,7 +113,7 @@ const Login = () => {
                                 </button>
                                 <div className="login-register">
                                     <p>Don't have an acoount ?
-                                        <Link to="/Signup" className="register-link"> Register</Link>
+                                        <Link to="/register" className="register-link"> Register</Link>
                                     </p>
                                 </div>
                                 <div className="flex items-center gap-3 my-5">

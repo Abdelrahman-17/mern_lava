@@ -1,11 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import './Booking.css'
-import { ToastContainer, toast } from 'react-toastify'
-import { useDispatch, useSelector } from 'react-redux'
-import data from '../../../public/data.json'
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import { addtocart } from '../../redux/slice/cartslice'
-import axios from 'axios'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+
 import { servicesdata } from '../../redux/slice/serviceslice'
 import HeroCard from '../ui/herocard/HeroCard'
 
@@ -13,15 +10,8 @@ const Booking = () => {
     const [location, setLocation] = useState(false)
     const [active, setActive] = useState(true)
     const ourservicesref = useRef()
-    // const [services, setServices] = useState([])
     const services = useSelector(servicesdata)
     const navigate = useNavigate()
-    // useEffect(() => {
-    //     if (data) {
-    //         setServices(data.booking_services)
-    //     }
-    // }, [data])
-
     const addservicebooking = (ele) => {
         // dispatch(addservicetobooking(ele))
         navigate(`/bookingdetails/${ele.id}`)
