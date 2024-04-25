@@ -14,6 +14,7 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import Portfolio from './homeitems/portfolio/Portfolio'
 import Blog from './homeitems/blog/Blog'
 import Bestseller from './homeitems/bestseller/Bestseller'
+import Recommendation from './homeitems/recommendation/Recommendation'
 const Home = () => {
 
     return (

@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addtocart, cartitem, clearcart, decrease, removefromcart, totalprice, totalquantity } from '../../redux/slice/cartslice'
 import { favourititem } from '../../redux/slice/favouritslice'
 import { PiHeartBreakFill } from "react-icons/pi";
+import Recommendation from '../home/homeitems/recommendation/Recommendation'
 
 const Cart = () => {
     const dispatch = useDispatch()
@@ -86,6 +87,7 @@ const Cart = () => {
                                 </div>
                             </div>
                         </div>
+                        {/* <Recommendation /> */}
                     </>
                     : <>
                         <div className="nocart bg-dark p-5 text-center ng-star-inserted">

@@ -15,6 +15,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { servicesdata } from '../../../redux/slice/serviceslice'
 import { carsdata } from '../../../redux/slice/carsslice'
+import Recommendation from '../../home/homeitems/recommendation/Recommendation'
 
 const Bookingdetails = () => {
     // const [active, setActive] = useState(false)
@@ -257,6 +258,7 @@ const Bookingdetails = () => {
 
 
                         </div>
+                        {/* <Recommendation /> */}
                     </>
                     :
                     // <div>
@@ -282,7 +284,7 @@ const Bookingdetails = () => {
 
                     //     )}
                     // </div>
-                    < >
+                    <>
                         <h1 className='my-4'>Select Day</h1>
                         <Calendar
                             className={`custom-calendar`}

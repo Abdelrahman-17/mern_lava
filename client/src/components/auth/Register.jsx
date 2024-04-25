@@ -9,6 +9,8 @@ import axios from 'axios';
 import { v4 as uuid } from "uuid"
 import Cookies from 'universal-cookie';
 import Logo from "../../assets/img/logo/03.png"
+import { FcGoogle } from 'react-icons/fc';
+import { FaFacebook, FaGithub } from 'react-icons/fa';
 const Register = () => {
     const cookies = new Cookies();
     // const [firstname, setFirstname] = useState("");
@@ -40,6 +42,7 @@ const Register = () => {
     }
     const handleRegister = async (e) => {
         e.preventDefault();
+
         setLoading(true)
         const uid = uuid()
         const base64Data = imagePreview;
@@ -191,7 +194,7 @@ const Register = () => {
                                 <input type="password" name="" id="confpassword" value={cPassword} onChange={(e) => setcPassword(e.target.value)}  />
                                 <label>Confirm Password</label>
                             </div> */}
-                                <label
+                                {/* <label
                                     htmlFor="profile"
                                     className="cursor-pointer flex items-center gap-3 justify-center my-2"
                                 >
@@ -211,7 +214,7 @@ const Register = () => {
                                     style={{ display: "none" }}
                                     onChange={handleImageChange}
                                 // onChange={(e) => setImage(e.target.files[0])}
-                                />
+                                /> */}
                                 <button type="submit" id="register_btn" className="btn">
                                     Register
                                     {/* {loading?'Register....':'Register'} */}

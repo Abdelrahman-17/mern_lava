@@ -33,6 +33,7 @@ import storeRoutes from "./routes/store.routes.js";
 import chatRoutes from "./routes/chat.routes.js";
 import testimonialRoutes from './routes/testimonial.routes.js';
 import notificationRoutes from './routes/notification.routes.js';
+import recommendationsRoutes from './routes/recommendations.routes.js';
 
 app.use("/api/auth", authRoutes);
 app.use('/api/passport', passportRoutes)
@@ -42,6 +43,7 @@ app.use("/api/store", storeRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/testimonial", testimonialRoutes);
 app.use("/api/notification", notificationRoutes);
+app.use("/api/recommendations", recommendationsRoutes);
 
 // Connect to MongoDB
 import { ConnectToMongoDB } from "./db/ConnectToMongoDB.js";
