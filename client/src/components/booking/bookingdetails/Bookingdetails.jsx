@@ -187,7 +187,7 @@ const Bookingdetails = () => {
                         </div>
                         <div className="booking-form">
                             <div className="body-style">
-                                <h2>Body Style</h2>
+                                <h2 className='text-[#007bff]'>Body Style</h2>
                                 <div className="styles">
                                     {/* {cars &&
                                 cars.map(ele => {
@@ -230,7 +230,7 @@ const Bookingdetails = () => {
                                                     )
                                                 })}
                                             </select>
-                                            <input type="text" className='bg-transparent border p-3 rounded-xl text-xl' value={platenumber} placeholder='Plate Number' onChange={(e) => setPlatenumber(e.target.value)} />
+                                            <input type="text" className='bg-transparent border-2 border-black p-3 rounded-xl text-xl' value={platenumber} placeholder='Plate Number' onChange={(e) => setPlatenumber(e.target.value)} />
                                             <br />
                                         </>
                                     }

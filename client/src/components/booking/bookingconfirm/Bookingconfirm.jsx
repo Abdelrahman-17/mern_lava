@@ -51,7 +51,7 @@ const Bookingconfirm = () => {
     }
     return (
         <section className='booking-payment flex items-center justify-center'>
-            <div className='w-[380px] h-[380px] p-5 rounded-xl text-white'>
+            <div className='w-[380px] h-[380px] p-5 rounded-xl'>
                 <h2>Payment Total</h2>
                 {
                     booking && booking.length > 0 &&

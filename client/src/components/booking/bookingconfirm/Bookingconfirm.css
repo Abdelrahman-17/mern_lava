@@ -1,9 +1,11 @@
 .booking-payment {
-    background-image: url(../../../assets/About-Us-BG-1.png);
+    /* background-image: url(../../../assets/About-Us-BG-1.png); */
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: #06090d;
+    /* background-color: #06090d; */
+    background-color: #f6f6f6;
+    color: #000;
     min-height: 70vh;
 
 }
@@ -12,7 +14,7 @@
     background-color: transparent;
     /* background-color: #477cff; */
     /* border: 3px solid #477cff; */
-    box-shadow: 0 0 30px 10px #477cff;
+    box-shadow: 0 0 20px 5px #477cff;
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
@@ -36,4 +38,5 @@
     border-radius: 15px;
     font-size: 1.2rem;
     text-transform: capitalize;
+    color: white;
 }
